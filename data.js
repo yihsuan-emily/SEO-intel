@@ -8,6 +8,7 @@ const INTEL_DATA = {
   meta: {
     date: "2026.04.26",
     weekday: "週日",
+    weekday_en: "Sunday",
     issue: 1,
   },
 
@@ -20,8 +21,8 @@ const INTEL_DATA = {
   cards: [
     {
       domain: "SEO",
-      category: "strategy",      // strategy | execution | measurement | market
-      credibility: "official",   // official | research | opinion | unverified
+      category: "strategy",
+      credibility: "official",
       title: "March 2026 Core Update：AI 生成內容的新標準",
       body: "更新懲罰「大規模生產、缺乏人工編輯監督」的內容。分析師認為部署了語義過濾機制，能識別 AI 替代人工 vs AI 輔助人工的差異。前十名有90.7%的頁面位置發生變動。\n\n⚠️ 「Gemini 4.0 語義過濾器」是推論，非官方確認。",
       action: "逐頁自問：「這頁有什麼是前十名沒有的？」沒答案 = 資訊增益問題，不是技術問題",
@@ -73,7 +74,6 @@ const INTEL_DATA = {
     { priority: "low",  label: "長期", text: "在 Reddit、LinkedIn 建立品牌存在感，增加第三方引用密度", tag: "GEO · 策略" }
   ],
 
-  // 追蹤工具庫新增/更新的項目（只列本期有變動的）
   tracker_updates: [
     {
       table: "AEO",

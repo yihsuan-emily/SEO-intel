@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,12 +64,37 @@
   .logo { font-family: var(--mono); font-size: 13px; letter-spacing: 0.15em; color: var(--accent); text-transform: uppercase; }
   .logo span { color: var(--muted); }
 
+  .header-right { display: flex; align-items: center; gap: 16px; }
   .header-tags { display: flex; gap: 8px; }
 
   .tag { font-family: var(--mono); font-size: 10px; padding: 4px 10px; border-radius: 2px; letter-spacing: 0.1em; font-weight: 700; }
   .tag-seo { background: rgba(26,94,255,0.1); color: var(--seo); border: 1px solid rgba(26,94,255,0.25); }
   .tag-aeo { background: rgba(176,138,0,0.1); color: var(--aeo); border: 1px solid rgba(176,138,0,0.25); }
   .tag-geo { background: rgba(196,0,110,0.1); color: var(--geo); border: 1px solid rgba(196,0,110,0.25); }
+
+  /* Language Toggle */
+  .lang-toggle {
+    display: flex;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .lang-btn {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    padding: 5px 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--muted);
+    transition: all 0.15s;
+  }
+  .lang-btn.active {
+    background: var(--accent);
+    color: #fff;
+  }
+  .lang-btn:not(.active):hover { background: var(--bg3); color: var(--text); }
 
   .nav-tabs { display: flex; border-bottom: 1px solid var(--border); overflow-x: auto; }
 
@@ -149,6 +174,8 @@
   .tracker-table th { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); background: var(--bg3); }
   .tracker-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.5; }
   .tracker-table tr:hover td { background: rgba(26,26,255,0.02); }
+  .tracker-table td a { color: var(--accent); text-decoration: none; font-family: var(--mono); font-size: 10px; }
+  .tracker-table td a:hover { text-decoration: underline; }
 
   .trend-up     { color: #006e3c; font-family: var(--mono); font-size: 11px; }
   .trend-down   { color: #b03010; font-family: var(--mono); font-size: 11px; }
@@ -188,15 +215,6 @@
   .status-new      { background: rgba(232,78,27,0.08); color: #b03010; }
   .status-stable   { background: rgba(122,122,144,0.1); color: var(--muted); }
 
-  /* Sources */
-  .source-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-  @media (max-width: 768px) { .source-grid { grid-template-columns: 1fr; } }
-  .source-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; padding: 16px; }
-  .source-name { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
-  .source-type { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-bottom: 10px; }
-  .source-tags { display: flex; flex-wrap: wrap; gap: 4px; }
-  .source-tag { font-family: var(--mono); font-size: 9px; padding: 2px 6px; border-radius: 2px; background: var(--bg3); color: var(--muted); border: 1px solid var(--border); }
-
   ::-webkit-scrollbar { width: 4px; height: 4px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
@@ -208,28 +226,34 @@
   <div class="container">
     <div class="header-inner">
       <div class="logo">Search<span>/</span>Intel<span> ·</span> Hub</div>
-      <div class="header-tags">
-        <span class="tag tag-seo">SEO</span>
-        <span class="tag tag-aeo">AEO</span>
-        <span class="tag tag-geo">GEO</span>
+      <div class="header-right">
+        <div class="header-tags">
+          <span class="tag tag-seo">SEO</span>
+          <span class="tag tag-aeo">AEO</span>
+          <span class="tag tag-geo">GEO</span>
+        </div>
+        <div class="lang-toggle">
+          <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" id="btn-zh" onclick="setLang('zh')">中文</button>
+        </div>
       </div>
     </div>
   </div>
 <script src="data.js"></script>
+<script src="data_en.js"></script>
 </header>
 
 <div class="container">
   <div class="nav-tabs">
-    <button class="nav-tab active" onclick="showPage('daily',this)">每日情報</button>
-    <button class="nav-tab" onclick="showPage('tracker',this)">追蹤工具庫</button>
-    <button class="nav-tab" onclick="showPage('framework',this)">知識框架</button>
-    <button class="nav-tab" onclick="showPage('sources',this)">情報來源</button>
+    <button class="nav-tab active" id="tab-daily" onclick="showPage('daily',this)" data-en="Daily Intel" data-zh="每日情報">Daily Intel</button>
+    <button class="nav-tab" id="tab-tracker" onclick="showPage('tracker',this)" data-en="Tracker Library" data-zh="追蹤工具庫">Tracker Library</button>
+    <button class="nav-tab" id="tab-framework" onclick="showPage('framework',this)" data-en="Framework" data-zh="知識框架">Framework</button>
   </div>
 </div>
 
 <div class="container">
 
-<!-- PAGE: 每日情報 -->
+<!-- PAGE: Daily Intel -->
 <div id="page-daily" class="page active">
 <main>
   <div class="date-bar">
@@ -237,218 +261,300 @@
     <div class="live-dot">LIVE</div>
   </div>
 
-  <div class="legend">
-    <div class="legend-item"><div class="legend-dot" style="background:#5a32cc"></div>策略/方法論</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#007a73"></div>具體執行</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#8a5e00"></div>衡量效益</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#c4006e"></div>針對市場</div>
-    <div style="width:1px;background:var(--border);margin:0 4px"></div>
-    <div class="legend-item"><div class="legend-dot" style="background:#006e3c"></div>官方確認</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#1a5eff"></div>研究數據</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#8a5e00"></div>業界觀點</div>
-    <div class="legend-item"><div class="legend-dot" style="background:#b03010"></div>未驗證推論</div>
-  </div>
+  <div class="legend" id="legend-bar"></div>
 
   <div id="priority-alert"></div>
   <div class="report-grid" id="cards-grid"></div>
   <div class="action-section">
-    <div class="section-title">// 本週行動清單</div>
+    <div class="section-title" id="actions-title"></div>
     <div id="actions-list"></div>
   </div>
 </main>
 </div>
 
-<!-- PAGE: 追蹤工具庫 -->
+<!-- PAGE: Tracker Library -->
 <div id="page-tracker" class="page">
 <main>
   <div class="top-bar">
-    <div class="date-label">// 持續更新工具庫</div>
-    <button class="export-btn" onclick="exportCSV()">↓ 匯出 CSV</button>
+    <div class="date-label" id="tracker-subtitle"></div>
+    <button class="export-btn" onclick="exportCSV()" id="export-btn">↓ Export CSV</button>
   </div>
   <div id="tracker-content"></div>
 </main>
 </div>
 
-<!-- PAGE: 知識框架 -->
+<!-- PAGE: Framework -->
 <div id="page-framework" class="page">
 <main>
   <div class="kb-header">
-    <h2>知識框架</h2>
-    <p>三層優化體系的完整分類架構</p>
+    <h2 id="kb-title">Knowledge Framework</h2>
+    <p id="kb-subtitle">Complete taxonomy of the three-layer optimization system</p>
   </div>
   <div class="kb-grid">
     <div class="kb-col">
-      <div class="kb-col-header col-seo">SEO · 搜尋引擎優化</div>
+      <div class="kb-col-header col-seo" id="kb-seo-header">SEO · Search Engine Optimization</div>
       <div class="kb-section"><div class="kb-section-title">On-page</div>
-        <div class="kb-item"><span class="kb-item-name">Keyword Strategy</span><span class="kb-item-status status-stable">穩定</span></div>
-        <div class="kb-item"><span class="kb-item-name">Semantic Clustering</span><span class="kb-item-status status-tracked">追蹤中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Content Depth</span><span class="kb-item-status status-tracked">追蹤中</span></div>
-        <div class="kb-item"><span class="kb-item-name">E-E-A-T Signals</span><span class="kb-item-status status-tracked">追蹤中</span></div>
+        <div class="kb-item"><span class="kb-item-name">Keyword Strategy</span><span class="kb-item-status status-stable" data-en="Stable" data-zh="穩定">Stable</span></div>
+        <div class="kb-item"><span class="kb-item-name">Semantic Clustering</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Content Depth</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">E-E-A-T Signals</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
       </div>
       <div class="kb-section"><div class="kb-section-title">Technical</div>
-        <div class="kb-item"><span class="kb-item-name">Core Web Vitals</span><span class="kb-item-status status-stable">穩定</span></div>
-        <div class="kb-item"><span class="kb-item-name">Crawlability</span><span class="kb-item-status status-stable">穩定</span></div>
-        <div class="kb-item"><span class="kb-item-name">Mobile UX</span><span class="kb-item-status status-tracked">追蹤中</span></div>
+        <div class="kb-item"><span class="kb-item-name">Core Web Vitals</span><span class="kb-item-status status-stable" data-en="Stable" data-zh="穩定">Stable</span></div>
+        <div class="kb-item"><span class="kb-item-name">Crawlability</span><span class="kb-item-status status-stable" data-en="Stable" data-zh="穩定">Stable</span></div>
+        <div class="kb-item"><span class="kb-item-name">Mobile UX</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
       </div>
       <div class="kb-section"><div class="kb-section-title">Off-page</div>
-        <div class="kb-item"><span class="kb-item-name">Backlink Quality</span><span class="kb-item-status status-stable">穩定</span></div>
-        <div class="kb-item"><span class="kb-item-name">Digital PR</span><span class="kb-item-status status-tracked">追蹤中</span></div>
+        <div class="kb-item"><span class="kb-item-name">Backlink Quality</span><span class="kb-item-status status-stable" data-en="Stable" data-zh="穩定">Stable</span></div>
+        <div class="kb-item"><span class="kb-item-name">Digital PR</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
       </div>
-      <div class="kb-section"><div class="kb-section-title">演算法</div>
-        <div class="kb-item"><span class="kb-item-name">Core Updates</span><span class="kb-item-status status-tracked">追蹤中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Spam Updates</span><span class="kb-item-status status-tracked">追蹤中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Helpful Content</span><span class="kb-item-status status-tracked">追蹤中</span></div>
+      <div class="kb-section"><div class="kb-section-title" data-en="Algorithm" data-zh="演算法">Algorithm</div>
+        <div class="kb-item"><span class="kb-item-name">Core Updates</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Spam Updates</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Helpful Content</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
       </div>
     </div>
     <div class="kb-col">
-      <div class="kb-col-header col-aeo">AEO · 答案引擎優化</div>
+      <div class="kb-col-header col-aeo" id="kb-aeo-header">AEO · Answer Engine Optimization</div>
       <div class="kb-section"><div class="kb-section-title">On-page</div>
-        <div class="kb-item"><span class="kb-item-name">Extractability</span><span class="kb-item-status status-tracked">追蹤中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Answer-first Structure</span><span class="kb-item-status status-tracked">追蹤中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Schema Markup</span><span class="kb-item-status status-tracked">追蹤中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Relevance / Intent</span><span class="kb-item-status status-tracked">追蹤中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Content Format (HTML)</span><span class="kb-item-status status-new">新發現</span></div>
+        <div class="kb-item"><span class="kb-item-name">Extractability</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Answer-first Structure</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Schema Markup</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Relevance / Intent</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Content Format (HTML)</span><span class="kb-item-status status-new" data-en="New" data-zh="新發現">New</span></div>
       </div>
       <div class="kb-section"><div class="kb-section-title">Off-page</div>
-        <div class="kb-item"><span class="kb-item-name">Citation Density</span><span class="kb-item-status status-tracked">追蹤中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Platform Presence</span><span class="kb-item-status status-tracked">追蹤中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Industry Publications</span><span class="kb-item-status status-emerging">成長中</span></div>
+        <div class="kb-item"><span class="kb-item-name">Citation Density</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Platform Presence</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Industry Publications</span><span class="kb-item-status status-emerging" data-en="Growing" data-zh="成長中">Growing</span></div>
       </div>
       <div class="kb-section"><div class="kb-section-title">Authority</div>
-        <div class="kb-item"><span class="kb-item-name">E-E-A-T</span><span class="kb-item-status status-tracked">追蹤中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Brand Mentions</span><span class="kb-item-status status-emerging">成長中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Thought Leadership</span><span class="kb-item-status status-emerging">成長中</span></div>
+        <div class="kb-item"><span class="kb-item-name">E-E-A-T</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Brand Mentions</span><span class="kb-item-status status-emerging" data-en="Growing" data-zh="成長中">Growing</span></div>
+        <div class="kb-item"><span class="kb-item-name">Thought Leadership</span><span class="kb-item-status status-emerging" data-en="Growing" data-zh="成長中">Growing</span></div>
       </div>
       <div class="kb-section"><div class="kb-section-title">Technical</div>
-        <div class="kb-item"><span class="kb-item-name">Robots.txt (AI Bots)</span><span class="kb-item-status status-tracked">追蹤中</span></div>
-        <div class="kb-item"><span class="kb-item-name">llms.txt</span><span class="kb-item-status status-emerging">成長中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Structured Data</span><span class="kb-item-status status-tracked">追蹤中</span></div>
+        <div class="kb-item"><span class="kb-item-name">Robots.txt (AI Bots)</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">llms.txt</span><span class="kb-item-status status-emerging" data-en="Growing" data-zh="成長中">Growing</span></div>
+        <div class="kb-item"><span class="kb-item-name">Structured Data</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
       </div>
     </div>
     <div class="kb-col">
-      <div class="kb-col-header col-geo">GEO · 生成引擎優化</div>
-      <div class="kb-section"><div class="kb-section-title">平台布局</div>
-        <div class="kb-item"><span class="kb-item-name">ChatGPT Search</span><span class="kb-item-status status-tracked">追蹤中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Google AI Overviews</span><span class="kb-item-status status-tracked">追蹤中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Perplexity</span><span class="kb-item-status status-tracked">追蹤中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Grok / X</span><span class="kb-item-status status-emerging">成長中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Claude</span><span class="kb-item-status status-emerging">成長中</span></div>
+      <div class="kb-col-header col-geo" id="kb-geo-header">GEO · Generative Engine Optimization</div>
+      <div class="kb-section"><div class="kb-section-title" data-en="Platform Coverage" data-zh="平台布局">Platform Coverage</div>
+        <div class="kb-item"><span class="kb-item-name">ChatGPT Search</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Google AI Overviews</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Perplexity</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Grok / X</span><span class="kb-item-status status-emerging" data-en="Growing" data-zh="成長中">Growing</span></div>
+        <div class="kb-item"><span class="kb-item-name">Claude</span><span class="kb-item-status status-emerging" data-en="Growing" data-zh="成長中">Growing</span></div>
       </div>
-      <div class="kb-section"><div class="kb-section-title">內容策略</div>
-        <div class="kb-item"><span class="kb-item-name">Information Gain</span><span class="kb-item-status status-tracked">追蹤中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Original Research</span><span class="kb-item-status status-tracked">追蹤中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Freshness</span><span class="kb-item-status status-emerging">成長中</span></div>
+      <div class="kb-section"><div class="kb-section-title" data-en="Content Strategy" data-zh="內容策略">Content Strategy</div>
+        <div class="kb-item"><span class="kb-item-name">Information Gain</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Original Research</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Freshness</span><span class="kb-item-status status-emerging" data-en="Growing" data-zh="成長中">Growing</span></div>
       </div>
-      <div class="kb-section"><div class="kb-section-title">量測</div>
-        <div class="kb-item"><span class="kb-item-name">Brand Mention Rate</span><span class="kb-item-status status-tracked">追蹤中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Citation Stability</span><span class="kb-item-status status-new">新發現</span></div>
-        <div class="kb-item"><span class="kb-item-name">AI Traffic Share</span><span class="kb-item-status status-tracked">追蹤中</span></div>
-        <div class="kb-item"><span class="kb-item-name">Share of Model</span><span class="kb-item-status status-emerging">成長中</span></div>
+      <div class="kb-section"><div class="kb-section-title" data-en="Measurement" data-zh="量測">Measurement</div>
+        <div class="kb-item"><span class="kb-item-name">Brand Mention Rate</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Citation Stability</span><span class="kb-item-status status-new" data-en="New" data-zh="新發現">New</span></div>
+        <div class="kb-item"><span class="kb-item-name">AI Traffic Share</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Share of Model</span><span class="kb-item-status status-emerging" data-en="Growing" data-zh="成長中">Growing</span></div>
       </div>
-      <div class="kb-section"><div class="kb-section-title">工具</div>
-        <div class="kb-item"><span class="kb-item-name">HubSpot AEO Grader</span><span class="kb-item-status status-tracked">免費</span></div>
-        <div class="kb-item"><span class="kb-item-name">Semrush AI Toolkit</span><span class="kb-item-status status-tracked">付費</span></div>
-        <div class="kb-item"><span class="kb-item-name">Profound</span><span class="kb-item-status status-tracked">企業</span></div>
-        <div class="kb-item"><span class="kb-item-name">Scrunch</span><span class="kb-item-status status-emerging">中市場</span></div>
+      <div class="kb-section"><div class="kb-section-title" data-en="Tools" data-zh="工具">Tools</div>
+        <div class="kb-item"><span class="kb-item-name">HubSpot AEO Grader</span><span class="kb-item-status status-tracked" data-en="Free" data-zh="免費">Free</span></div>
+        <div class="kb-item"><span class="kb-item-name">Semrush AI Toolkit</span><span class="kb-item-status status-tracked" data-en="Paid" data-zh="付費">Paid</span></div>
+        <div class="kb-item"><span class="kb-item-name">Profound</span><span class="kb-item-status status-tracked" data-en="Enterprise" data-zh="企業">Enterprise</span></div>
+        <div class="kb-item"><span class="kb-item-name">Scrunch</span><span class="kb-item-status status-emerging" data-en="Mid-market" data-zh="中市場">Mid-market</span></div>
       </div>
     </div>
-  </div>
-</main>
-</div>
-
-<!-- PAGE: 情報來源 -->
-<div id="page-sources" class="page">
-<main>
-  <div class="top-bar"><div class="date-label">// 已納入情報來源清單</div></div>
-  <div class="source-grid">
-    <div class="source-card"><div class="source-name">Search Engine Land</div><div class="source-type">業界媒體 · 日更</div><div class="source-tags"><span class="source-tag">SEO</span><span class="source-tag">演算法</span><span class="source-tag">高可信度</span></div></div>
-    <div class="source-card"><div class="source-name">Search Engine Journal</div><div class="source-type">業界媒體 · 日更</div><div class="source-tags"><span class="source-tag">SEO</span><span class="source-tag">AEO</span><span class="source-tag">教學</span></div></div>
-    <div class="source-card"><div class="source-name">Ahrefs Blog</div><div class="source-type">工具商研究 · 週更</div><div class="source-tags"><span class="source-tag">數據研究</span><span class="source-tag">AEO</span><span class="source-tag">高品質</span></div></div>
-    <div class="source-card"><div class="source-name">SEOFOMO (Aleyda Solis)</div><div class="source-type">個人電子報 · 週更</div><div class="source-tags"><span class="source-tag">策略</span><span class="source-tag">LinkedIn精華</span><span class="source-tag">KOL</span></div></div>
-    <div class="source-card"><div class="source-name">Lily Ray (Algorythmic)</div><div class="source-type">SEO研究者 · 不定期</div><div class="source-tags"><span class="source-tag">E-E-A-T</span><span class="source-tag">AEO</span><span class="source-tag">深度分析</span></div></div>
-    <div class="source-card"><div class="source-name">Chris Long (Nectiv)</div><div class="source-type">AEO顧問 · 不定期</div><div class="source-tags"><span class="source-tag">AEO</span><span class="source-tag">GEO</span><span class="source-tag">B2B</span></div></div>
-    <div class="source-card"><div class="source-name">Similarweb Research</div><div class="source-type">數據平台 · 月報</div><div class="source-tags"><span class="source-tag">市場份額</span><span class="source-tag">GEO量測</span></div></div>
-    <div class="source-card"><div class="source-name">eMarketer</div><div class="source-type">市場研究 · 週更</div><div class="source-tags"><span class="source-tag">市場趨勢</span><span class="source-tag">數據</span></div></div>
-    <div class="source-card"><div class="source-name">Google Search Central</div><div class="source-type">官方 · 不定期</div><div class="source-tags"><span class="source-tag">官方說法</span><span class="source-tag">最高可信度</span></div></div>
-    <div class="source-card"><div class="source-name">Anthropic / OpenAI Blog</div><div class="source-type">官方 · 不定期</div><div class="source-tags"><span class="source-tag">AI平台動態</span><span class="source-tag">GEO相關</span></div></div>
-    <div class="source-card"><div class="source-name">SE Roundtable (Barry Schwartz)</div><div class="source-type">個人媒體 · 日更</div><div class="source-tags"><span class="source-tag">演算法快訊</span><span class="source-tag">社群討論</span></div></div>
-    <div class="source-card"><div class="source-name">LinkedIn (間接)</div><div class="source-type">透過電子報抓取</div><div class="source-tags"><span class="source-tag">業界討論</span><span class="source-tag">需人工補充</span></div></div>
   </div>
 </main>
 </div>
 
 </div><!-- end container -->
 
-<!-- Tracker data hardcoded (updated by Claude alongside data.js) -->
+<!-- Tracker data — updated by Claude alongside data.js -->
 <script id="tracker-data">
 const TRACKER = {
   AEO: [
-    { cat:"On-page",    item:"Extractability",         note:"開頭一句給完整答案；每段可獨立成立",        update:"AI 檢索系統對定義句權重高（Ahrefs, 2026.04）",  trend:"up",     cred:"research" },
-    { cat:"On-page",    item:"Schema Markup",           note:"FAQ / How-to / Article schema",             update:"單一最高投報率技術修復（業界共識）",              trend:"up",     cred:"opinion" },
-    { cat:"On-page",    item:"Relevance",               note:"語義豐富、涵蓋完整意圖",                    update:"GEO 解讀意圖而非匹配關鍵字（Google, 2026）",      trend:"up",     cred:"official" },
-    { cat:"On-page",    item:"Content Format (HTML) 🆕",note:"只支援 HTML；忽略 .md 格式",               update:"OtterlyAI 實驗確認（2026.04）",                  trend:"stable", cred:"research" },
-    { cat:"Off-page",   item:"Citation Density",        note:"10+ 獨立網域引用 → 引用率提升3.2倍",       update:"第三方引用是自有網域的6.5倍效果（Ahrefs）",       trend:"up",     cred:"research" },
-    { cat:"Off-page",   item:"Platform Presence",       note:"Reddit / LinkedIn / YouTube 優先",         update:"三個是主要 LLM 最常引用的平台（多來源）",          trend:"up",     cred:"research" },
-    { cat:"Authority",  item:"E-E-A-T",                 note:"作者資歷、第一手經驗、可引用的觀點",        update:"Core Update 懲罰缺乏人工監督的內容（2026.04）",   trend:"up",     cred:"official" },
-    { cat:"Authority",  item:"Domain Authority",        note:"傳統 DA 對 AI 引用影響有限",               update:"內容深度和可讀性比 DA 更重要（Ahrefs）",          trend:"down",   cred:"research" },
-    { cat:"Technical",  item:"Robots.txt",              note:"明確允許 GPTBot / Google-Extended",        update:"基礎配置，應立即確認",                            trend:"stable", cred:"official" },
-    { cat:"Technical",  item:"llms.txt",                note:"新興格式，類似 robots.txt for LLMs",       update:"討論多，實際影響尚不明確（2026.04）",             trend:"stable", cred:"unverified" },
+    { cat:"On-page",   cat_zh:"On-page",   item:"Extractability",           note:"Lead with complete answer in first sentence; each paragraph self-contained",          note_zh:"開頭一句給完整答案；每段可獨立成立",              update:"AI retrieval weights definitional sentences highly (Ahrefs, 2026.04)",    update_zh:"AI 檢索系統對定義句權重高（Ahrefs, 2026.04）",  trend:"up",     cred:"research",  ref:"https://ahrefs.com/blog/ai-overview-citations-top-10/" },
+    { cat:"On-page",   cat_zh:"On-page",   item:"Schema Markup",             note:"FAQ / How-to / Article schema",                                                       note_zh:"FAQ / How-to / Article schema",                  update:"Highest single-fix ROI by industry consensus",                            update_zh:"單一最高投報率技術修復（業界共識）",             trend:"up",     cred:"opinion",   ref:"https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data" },
+    { cat:"On-page",   cat_zh:"On-page",   item:"Relevance",                 note:"Semantic richness; full intent coverage",                                              note_zh:"語義豐富、涵蓋完整意圖",                         update:"GEO interprets intent, not keyword matching (Google, 2026)",               update_zh:"GEO 解讀意圖而非匹配關鍵字（Google, 2026）",   trend:"up",     cred:"official",  ref:"https://developers.google.com/search/blog" },
+    { cat:"On-page",   cat_zh:"On-page",   item:"Content Format (HTML) 🆕",  note:"HTML only; .md format ignored by AI crawlers",                                        note_zh:"只支援 HTML；忽略 .md 格式",                     update:"Confirmed by OtterlyAI experiments (2026.04)",                            update_zh:"OtterlyAI 實驗確認（2026.04）",                trend:"stable", cred:"research",  ref:"https://www.otterly.ai/" },
+    { cat:"Off-page",  cat_zh:"Off-page",  item:"Citation Density",          note:"10+ independent domains citing → 3.2x citation rate increase",                        note_zh:"10+ 獨立網域引用 → 引用率提升3.2倍",             update:"Third-party citations 6.5x more effective than owned domains (Ahrefs)",   update_zh:"第三方引用是自有網域的6.5倍效果（Ahrefs）",    trend:"up",     cred:"research",  ref:"https://ahrefs.com/blog/search-rankings-ai-citations/" },
+    { cat:"Off-page",  cat_zh:"Off-page",  item:"Platform Presence",         note:"Reddit / LinkedIn / YouTube first priority",                                          note_zh:"Reddit / LinkedIn / YouTube 優先",               update:"Top 3 most-cited platforms across major LLMs (multiple sources)",          update_zh:"三個是主要 LLM 最常引用的平台（多來源）",       trend:"up",     cred:"research",  ref:"https://ahrefs.com/blog/ai-overview-citations-top-10/" },
+    { cat:"Authority", cat_zh:"Authority", item:"E-E-A-T",                   note:"Author credentials, first-hand experience, citable perspective",                      note_zh:"作者資歷、第一手經驗、可引用的觀點",             update:"Core Update penalizes content lacking human editorial oversight (2026.04)",update_zh:"Core Update 懲罰缺乏人工監督的內容（2026.04）",trend:"up",     cred:"official",  ref:"https://developers.google.com/search/blog/2026/04/back-button-hijacking" },
+    { cat:"Authority", cat_zh:"Authority", item:"Domain Authority",          note:"Traditional DA has limited impact on AI citation selection",                          note_zh:"傳統 DA 對 AI 引用影響有限",                     update:"Content depth and readability matter more than DA (Ahrefs)",              update_zh:"內容深度和可讀性比 DA 更重要（Ahrefs）",        trend:"down",   cred:"research",  ref:"https://ahrefs.com/blog/the-great-decoupling/" },
+    { cat:"Technical", cat_zh:"Technical", item:"Robots.txt",                note:"Explicitly allow GPTBot / Google-Extended",                                           note_zh:"明確允許 GPTBot / Google-Extended",              update:"Baseline config — verify immediately",                                    update_zh:"基礎配置，應立即確認",                          trend:"stable", cred:"official",  ref:"https://developers.google.com/search/docs/crawling-indexing/overview" },
+    { cat:"Technical", cat_zh:"Technical", item:"llms.txt",                  note:"Emerging format, similar to robots.txt but for LLMs",                                 note_zh:"新興格式，類似 robots.txt for LLMs",             update:"Widely discussed; actual impact still unclear (2026.04)",                 update_zh:"討論多，實際影響尚不明確（2026.04）",           trend:"stable", cred:"unverified",ref:"https://llmstxt.org/" },
   ],
   GEO: [
-    { cat:"平台布局",   item:"ChatGPT",                 note:"34.5% 查詢啟用搜尋",                       update:"市場份額跌至61.7%（Similarweb, 2026.02）",        trend:"down",   cred:"research" },
-    { cat:"平台布局",   item:"Gemini",                  note:"Google AI Overviews 優化邏輯近似 SEO",     update:"市場份額急升至24.4%（Similarweb, 2026.02）",      trend:"up",     cred:"research" },
-    { cat:"平台布局",   item:"Perplexity",              note:"原始資料引用比例高",                        update:"份額穩定 ~1.8%",                                  trend:"stable", cred:"research" },
-    { cat:"量測",       item:"Brand Mention Rate",      note:"追蹤品牌在 AI 回應中的出現頻率",            update:"HubSpot AEO Grader 免費測試",                     trend:"up",     cred:"opinion" },
-    { cat:"量測",       item:"Citation Stability 🆕",   note:"40-60% 引用來源每月更換",                  update:"GEO 能見度遠不如 SEO 穩定（eMarketer, 2026）",    trend:"stable", cred:"research" },
-    { cat:"內容策略",   item:"Information Gain",        note:"提供他人沒有的觀點、數據、第一手經驗",      update:"Core Update 強化此信號；AI 引用偏好原創資料",     trend:"up",     cred:"official" },
+    { cat:"Platform",  cat_zh:"平台布局",  item:"ChatGPT",                  note:"34.5% of queries activate search mode",                                               note_zh:"34.5% 查詢啟用搜尋",                            update:"Market share fell to 61.7% (Similarweb, 2026.02)",                        update_zh:"市場份額跌至61.7%（Similarweb, 2026.02）",     trend:"down",   cred:"research",  ref:"https://www.similarweb.com/" },
+    { cat:"Platform",  cat_zh:"平台布局",  item:"Gemini",                   note:"Google AI Overviews optimization logic mirrors SEO",                                  note_zh:"Google AI Overviews 優化邏輯近似 SEO",           update:"Market share surged to 24.4% (Similarweb, 2026.02)",                      update_zh:"市場份額急升至24.4%（Similarweb, 2026.02）",   trend:"up",     cred:"research",  ref:"https://www.similarweb.com/" },
+    { cat:"Platform",  cat_zh:"平台布局",  item:"Perplexity",               note:"High raw-source citation ratio",                                                      note_zh:"原始資料引用比例高",                             update:"Share stable ~1.8%",                                                      update_zh:"份額穩定 ~1.8%",                               trend:"stable", cred:"research",  ref:"https://www.perplexity.ai/" },
+    { cat:"Measure",   cat_zh:"量測",      item:"Brand Mention Rate",        note:"Track brand appearance frequency in AI responses",                                    note_zh:"追蹤品牌在 AI 回應中的出現頻率",                update:"HubSpot AEO Grader — free baseline test",                                 update_zh:"HubSpot AEO Grader 免費測試",                  trend:"up",     cred:"opinion",   ref:"https://www.hubspot.com/ai-search-grader" },
+    { cat:"Measure",   cat_zh:"量測",      item:"Citation Stability 🆕",     note:"40–60% of citation sources change monthly",                                          note_zh:"40-60% 引用來源每月更換",                       update:"GEO visibility far less stable than SEO (eMarketer, 2026)",               update_zh:"GEO 能見度遠不如 SEO 穩定（eMarketer, 2026）", trend:"stable", cred:"research",  ref:"https://www.emarketer.com/" },
+    { cat:"Content",   cat_zh:"內容策略",  item:"Information Gain",          note:"Provide perspectives, data, and first-hand experience unavailable elsewhere",        note_zh:"提供他人沒有的觀點、數據、第一手經驗",           update:"Core Update strengthens this signal; AI citations favor original data",   update_zh:"Core Update 強化此信號；AI 引用偏好原創資料",  trend:"up",     cred:"official",  ref:"https://developers.google.com/search/docs/appearance/helpful-content-system" },
   ],
   SEO: [
-    { cat:"演算法",     item:"Core Update 節奏",        note:"2026 Q1 出現三個更新",                     update:"March Core Update 4月8日完成（Google 官方）",     trend:"stable", cred:"official" },
-    { cat:"排名信號",   item:"Helpful Content",         note:"人工監督 + AI 輔助 > AI 獨立生產",         update:"Core Update 懲罰 AI 替代人工的內容",               trend:"up",     cred:"opinion" },
-    { cat:"排名信號",   item:"Page-level Authority",    note:"弱內容即使在強網域也可能被懲罰",            update:"March Update 疑似更積極評估頁面層級（分析師）",   trend:"up",     cred:"unverified" },
-    { cat:"流量",       item:"AI Overview CTR 影響",    note:"AI Overviews 使前排 CTR 下降 58%",         update:"Ahrefs 研究（比去年34.5%更嚴重）",                trend:"down",   cred:"research" },
+    { cat:"Algorithm", cat_zh:"演算法",    item:"Core Update Cadence",       note:"3 updates appeared in Q1 2026",                                                      note_zh:"2026 Q1 出現三個更新",                           update:"March Core Update completed April 8 (Google official)",                   update_zh:"March Core Update 4月8日完成（Google 官方）",  trend:"stable", cred:"official",  ref:"https://developers.google.com/search/blog" },
+    { cat:"Ranking",   cat_zh:"排名信號",  item:"Helpful Content",           note:"Human-supervised + AI-assisted > AI-only production",                                note_zh:"人工監督 + AI 輔助 > AI 獨立生產",               update:"Core Update penalizes AI content that replaces human input",              update_zh:"Core Update 懲罰 AI 替代人工的內容",           trend:"up",     cred:"opinion",   ref:"https://developers.google.com/search/docs/appearance/helpful-content-system" },
+    { cat:"Ranking",   cat_zh:"排名信號",  item:"Page-level Authority",      note:"Weak content on strong domains can still be penalized",                              note_zh:"弱內容即使在強網域也可能被懲罰",                 update:"March Update appears to evaluate page-level signals more aggressively",  update_zh:"March Update 疑似更積極評估頁面層級（分析師）",trend:"up",     cred:"unverified",ref:"https://www.seroundtable.com/google-march-2026-core-update-complete-41145.html" },
+    { cat:"Traffic",   cat_zh:"流量",      item:"AI Overview CTR Impact",    note:"AI Overviews reduce top-ranking CTR by 58%",                                         note_zh:"AI Overviews 使前排 CTR 下降 58%",               update:"Ahrefs research (worse than 34.5% last year)",                           update_zh:"Ahrefs 研究（比去年34.5%更嚴重）",             trend:"down",   cred:"research",  ref:"https://ahrefs.com/blog/the-great-decoupling/" },
   ]
 };
 </script>
 
 <script>
-// ── Helpers ──────────────────────────────────────
+// ── i18n strings ─────────────────────────────────
+const i18n = {
+  en: {
+    dateFormat: (d) => `// ${d.date} · ${d.weekday_en||'Sunday'} · Issue ${d.issue}`,
+    legendItems: [
+      {color:'#5a32cc', label:'Strategy'},
+      {color:'#007a73', label:'Execution'},
+      {color:'#8a5e00', label:'Measurement'},
+      {color:'#c4006e', label:'Market'},
+      {divider: true},
+      {color:'#006e3c', label:'Official'},
+      {color:'#1a5eff', label:'Research'},
+      {color:'#8a5e00', label:'Industry'},
+      {color:'#b03010', label:'Unverified'},
+    ],
+    catLabel:  { strategy:'Strategy', execution:'Execution', measurement:'Measurement', market:'Market' },
+    credLabel: { official:'Official', research:'Research', opinion:'Industry', unverified:'Unverified' },
+    actionsTitle: '// This Week\'s Action List',
+    trackerSubtitle: '// Continuously updated tracker',
+    exportBtn: '↓ Export CSV',
+    trackerHeaders: ['Category','Item','Key Practice','Latest Update','Trend','Source','Reference'],
+    trackerNames: { AEO:'Answer Engine Optimization', GEO:'Generative Engine Optimization', SEO:'Search Engine Optimization' },
+    tabs: { daily:'Daily Intel', tracker:'Tracker Library', framework:'Framework' },
+    priorityLabel: (p) => `🔴 ${p.level}`,
+    actionLabels: { high:'Now', mid:'This Month', low:'Long-term' },
+    kbTitle: 'Knowledge Framework',
+    kbSubtitle: 'Complete taxonomy of the three-layer optimization system',
+    kbSEO: 'SEO · Search Engine Optimization',
+    kbAEO: 'AEO · Answer Engine Optimization',
+    kbGEO: 'GEO · Generative Engine Optimization',
+  },
+  zh: {
+    dateFormat: (d) => `// ${d.date} · ${d.weekday||'週日'} · 第${d.issue}期`,
+    legendItems: [
+      {color:'#5a32cc', label:'策略/方法論'},
+      {color:'#007a73', label:'具體執行'},
+      {color:'#8a5e00', label:'衡量效益'},
+      {color:'#c4006e', label:'針對市場'},
+      {divider: true},
+      {color:'#006e3c', label:'官方確認'},
+      {color:'#1a5eff', label:'研究數據'},
+      {color:'#8a5e00', label:'業界觀點'},
+      {color:'#b03010', label:'未驗證推論'},
+    ],
+    catLabel:  { strategy:'策略/方法論', execution:'具體執行', measurement:'衡量效益', market:'針對市場' },
+    credLabel: { official:'官方確認', research:'研究數據', opinion:'業界觀點', unverified:'未驗證推論' },
+    actionsTitle: '// 本週行動清單',
+    trackerSubtitle: '// 持續更新工具庫',
+    exportBtn: '↓ 匯出 CSV',
+    trackerHeaders: ['類別','子項目','關鍵做法','最新動態','趨勢','信源','參考連結'],
+    trackerNames: { AEO:'Answer Engine Optimization', GEO:'Generative Engine Optimization', SEO:'Search Engine Optimization' },
+    tabs: { daily:'每日情報', tracker:'追蹤工具庫', framework:'知識框架' },
+    priorityLabel: (p) => `🔴 ${p.level}`,
+    actionLabels: { high:'立即', mid:'本月', low:'長期' },
+    kbTitle: '知識框架',
+    kbSubtitle: '三層優化體系的完整分類架構',
+    kbSEO: 'SEO · 搜尋引擎優化',
+    kbAEO: 'AEO · 答案引擎優化',
+    kbGEO: 'GEO · 生成引擎優化',
+  }
+};
+
+// ── State ─────────────────────────────────────────
+let LANG = 'en';
+
+// ── Helpers ───────────────────────────────────────
 const catClass  = { strategy:'cat-strategy', execution:'cat-execution', measurement:'cat-measurement', market:'cat-market' };
-const catLabel  = { strategy:'策略/方法論', execution:'具體執行', measurement:'衡量效益', market:'針對市場' };
 const credClass = { official:'cred-official', research:'cred-research', opinion:'cred-opinion', unverified:'cred-unverified' };
-const credLabel = { official:'官方確認', research:'研究數據', opinion:'業界觀點', unverified:'未驗證推論' };
 const domainClass = { SEO:'tag-seo', AEO:'tag-aeo', GEO:'tag-geo' };
 const trendSymbol = { up:'↑', down:'↓', stable:'→' };
 const trendClass  = { up:'trend-up', down:'trend-down', stable:'trend-stable' };
-const credTrackerClass = { official:'cred-official', research:'cred-research', opinion:'cred-opinion', unverified:'cred-unverified' };
 
-// ── Render daily page ────────────────────────────
+function getLang() { return LANG; }
+function getT() { return i18n[LANG]; }
+function getData() { return LANG === 'en' ? (typeof INTEL_DATA_EN !== 'undefined' ? INTEL_DATA_EN : INTEL_DATA) : INTEL_DATA; }
+
+// ── Set language ──────────────────────────────────
+function setLang(lang) {
+  LANG = lang;
+  document.getElementById('btn-en').classList.toggle('active', lang==='en');
+  document.getElementById('btn-zh').classList.toggle('active', lang==='zh');
+  document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
+
+  // Update nav tabs text
+  const t = getT();
+  document.getElementById('tab-daily').textContent = t.tabs.daily;
+  document.getElementById('tab-tracker').textContent = t.tabs.tracker;
+  document.getElementById('tab-framework').textContent = t.tabs.framework;
+
+  // Update framework static text
+  document.getElementById('kb-title').textContent = t.kbTitle;
+  document.getElementById('kb-subtitle').textContent = t.kbSubtitle;
+  document.getElementById('kb-seo-header').textContent = t.kbSEO;
+  document.getElementById('kb-aeo-header').textContent = t.kbAEO;
+  document.getElementById('kb-geo-header').textContent = t.kbGEO;
+
+  // Update all [data-en]/[data-zh] elements in framework
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.textContent = lang === 'en' ? el.dataset.en : el.dataset.zh;
+  });
+
+  // Re-render dynamic content
+  renderDaily();
+
+  // If tracker is visible, re-render it
+  if (document.getElementById('page-tracker').classList.contains('active')) {
+    renderTracker();
+  }
+}
+
+// ── Render daily page ──────────────────────────────
 function renderDaily() {
-  const d = INTEL_DATA;
+  const d = getData();
+  const t = getT();
 
-  document.getElementById('date-label').textContent =
-    `// ${d.meta.date} · ${d.meta.weekday} · 第${d.meta.issue}期`;
+  document.getElementById('date-label').textContent = t.dateFormat(d.meta);
+  document.getElementById('actions-title').textContent = t.actionsTitle;
+  document.getElementById('tracker-subtitle').textContent = t.trackerSubtitle;
+  document.getElementById('export-btn').textContent = t.exportBtn;
 
+  // Legend
+  document.getElementById('legend-bar').innerHTML = t.legendItems.map(item =>
+    item.divider
+      ? `<div style="width:1px;background:var(--border);margin:0 4px"></div>`
+      : `<div class="legend-item"><div class="legend-dot" style="background:${item.color}"></div>${item.label}</div>`
+  ).join('');
+
+  // Priority
   document.getElementById('priority-alert').innerHTML = `
-    <div class="priority-icon">🔴 ${d.priority.level}</div>
+    <div class="priority-icon">${t.priorityLabel(d.priority)}</div>
     <div class="priority-content">
       <h3>${d.priority.title}</h3>
       <p>${d.priority.body}</p>
     </div>`;
 
+  // Cards
   const grid = document.getElementById('cards-grid');
   grid.innerHTML = d.cards.map(c => `
     <div class="report-card${c.full?' full':''}">
       <div class="card-meta">
         <span class="meta-pill ${domainClass[c.domain]}">${c.domain}</span>
-        <span class="meta-pill ${catClass[c.category]}">${catLabel[c.category]}</span>
-        <span class="meta-pill ${credClass[c.credibility]}">${credLabel[c.credibility]}</span>
+        <span class="meta-pill ${catClass[c.category]}">${t.catLabel[c.category]}</span>
+        <span class="meta-pill ${credClass[c.credibility]}">${t.credLabel[c.credibility]}</span>
       </div>
       <div class="card-title">${c.title}</div>
       <div class="card-body">${c.body}</div>
       <div class="card-action">${c.action}</div>
     </div>`).join('');
 
+  // Actions
   const pClass = { high:'p-high', mid:'p-mid', low:'p-low' };
   document.getElementById('actions-list').innerHTML = d.actions.map(a => `
     <div class="action-item">
@@ -457,32 +563,41 @@ function renderDaily() {
     </div>`).join('');
 }
 
-// ── Render tracker ───────────────────────────────
+// ── Render tracker ────────────────────────────────
 function renderTracker() {
+  const t = getT();
   const out = document.getElementById('tracker-content');
   out.innerHTML = Object.entries(TRACKER).map(([name, rows]) => `
     <div class="tracker-section">
-      <div class="tracker-title">// ${name} — ${{AEO:'Answer Engine Optimization',GEO:'Generative Engine Optimization',SEO:'Search Engine Optimization'}[name]}</div>
+      <div class="tracker-title">// ${name} — ${t.trackerNames[name]}</div>
       <table class="tracker-table">
         <thead><tr>
-          <th>類別</th><th>子項目</th><th>關鍵做法</th>
-          <th>最新動態</th><th>趨勢</th><th>信源</th>
+          ${t.trackerHeaders.map(h=>`<th>${h}</th>`).join('')}
         </tr></thead>
-        <tbody>${rows.map(r=>`
-          <tr>
-            <td><strong>${r.cat}</strong></td>
+        <tbody>${rows.map(r => {
+          const cat    = LANG==='zh' ? r.cat_zh : r.cat;
+          const note   = LANG==='zh' ? r.note_zh : r.note;
+          const update = LANG==='zh' ? r.update_zh : r.update;
+          const cred   = LANG==='zh' ? i18n.zh.credLabel[r.cred] : i18n.en.credLabel[r.cred];
+          const refCell = r.ref
+            ? `<a href="${r.ref}" target="_blank" rel="noopener">↗ link</a>`
+            : `<span style="color:var(--border)">—</span>`;
+          return `<tr>
+            <td><strong>${cat}</strong></td>
             <td>${r.item}</td>
-            <td>${r.note}</td>
-            <td>${r.update}</td>
+            <td>${note}</td>
+            <td>${update}</td>
             <td class="${trendClass[r.trend]}">${trendSymbol[r.trend]}</td>
-            <td><span class="meta-pill ${credTrackerClass[r.cred]}" style="font-size:9px">${credLabel[r.cred]}</span></td>
-          </tr>`).join('')}
+            <td><span class="meta-pill ${credClass[r.cred]}" style="font-size:9px">${cred}</span></td>
+            <td>${refCell}</td>
+          </tr>`;
+        }).join('')}
         </tbody>
       </table>
     </div>`).join('');
 }
 
-// ── Nav ──────────────────────────────────────────
+// ── Nav ───────────────────────────────────────────
 function showPage(id, btn) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
@@ -491,26 +606,32 @@ function showPage(id, btn) {
   if (id === 'tracker') renderTracker();
 }
 
-// ── Export CSV ───────────────────────────────────
+// ── Export CSV ────────────────────────────────────
 function exportCSV() {
-  let csv = '\uFEFF';
+  const t = getT();
+  let csv = '\uFEFF'; // BOM for Excel
   Object.entries(TRACKER).forEach(([name, rows]) => {
-    csv += `\n=== ${name} ===\n類別,子項目,關鍵做法,最新動態,趨勢,信源\n`;
+    csv += `\n=== ${name} ===\n`;
+    csv += t.trackerHeaders.join(',') + '\n';
     rows.forEach(r => {
-      csv += [r.cat, r.item, r.note, r.update, trendSymbol[r.trend], credLabel[r.cred]]
-        .map(v => `"${(v||'').replace(/"/g,'""')}"`)
-        .join(',') + '\n';
+      const cat    = LANG==='zh' ? r.cat_zh : r.cat;
+      const note   = LANG==='zh' ? r.note_zh : r.note;
+      const update = LANG==='zh' ? r.update_zh : r.update;
+      const cred   = LANG==='zh' ? i18n.zh.credLabel[r.cred] : i18n.en.credLabel[r.cred];
+      const values = [cat, r.item, note, update, trendSymbol[r.trend], cred, r.ref||''];
+      csv += values.map(v => `"${(v||'').replace(/"/g,'""')}"`).join(',') + '\n';
     });
   });
+  const date = getData().meta.date;
   const a = Object.assign(document.createElement('a'), {
     href: URL.createObjectURL(new Blob([csv], {type:'text/csv;charset=utf-8;'})),
-    download: `search-intel-${INTEL_DATA.meta.date}.csv`
+    download: `search-intel-${date}.csv`
   });
   a.click();
 }
 
-// ── Init ─────────────────────────────────────────
-renderDaily();
+// ── Init ──────────────────────────────────────────
+setLang('en');
 </script>
 </body>
 </html>
