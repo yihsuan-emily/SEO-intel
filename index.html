@@ -8,216 +8,117 @@
   @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
 
   :root {
-    --bg: #ffffff;
-    --bg2: #f7f7f9;
-    --bg3: #efeff2;
-    --border: #e0e0e8;
-    --accent: #1a1aff;
-    --accent2: #00a896;
-    --accent3: #e84e1b;
-    --text: #111118;
-    --muted: #7a7a90;
-    --seo: #1a5eff;
-    --aeo: #b08a00;
-    --geo: #c4006e;
-    --mono: 'Space Mono', monospace;
-    --sans: 'Noto Sans TC', sans-serif;
+    --bg: #ffffff; --bg2: #f7f7f9; --bg3: #efeff2; --border: #e0e0e8;
+    --accent: #1a1aff; --accent2: #00a896; --accent3: #e84e1b;
+    --text: #111118; --muted: #7a7a90;
+    --seo: #1a5eff; --aeo: #b08a00; --geo: #c4006e;
+    --mono: 'Space Mono', monospace; --sans: 'Noto Sans TC', sans-serif;
   }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    font-weight: 300;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(26,26,255,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(26,26,255,0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
-
-  header {
-    border-bottom: 1px solid var(--border);
-    padding: 20px 0;
-    position: sticky;
-    top: 0;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(10px);
-    z-index: 100;
-  }
-
-  .header-inner { display: flex; align-items: center; justify-content: space-between; }
-
-  .logo { font-family: var(--mono); font-size: 13px; letter-spacing: 0.15em; color: var(--accent); text-transform: uppercase; }
-  .logo span { color: var(--muted); }
-
-  .header-right { display: flex; align-items: center; gap: 16px; }
-  .header-tags { display: flex; gap: 8px; }
-
-  .tag { font-family: var(--mono); font-size: 10px; padding: 4px 10px; border-radius: 2px; letter-spacing: 0.1em; font-weight: 700; }
-  .tag-seo { background: rgba(26,94,255,0.1); color: var(--seo); border: 1px solid rgba(26,94,255,0.25); }
-  .tag-aeo { background: rgba(176,138,0,0.1); color: var(--aeo); border: 1px solid rgba(176,138,0,0.25); }
-  .tag-geo { background: rgba(196,0,110,0.1); color: var(--geo); border: 1px solid rgba(196,0,110,0.25); }
-
-  /* Language Toggle */
-  .lang-toggle {
-    display: flex;
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  .lang-btn {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    padding: 5px 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--muted);
-    transition: all 0.15s;
-  }
-  .lang-btn.active {
-    background: var(--accent);
-    color: #fff;
-  }
-  .lang-btn:not(.active):hover { background: var(--bg3); color: var(--text); }
-
-  .nav-tabs { display: flex; border-bottom: 1px solid var(--border); overflow-x: auto; }
-
-  .nav-tab {
-    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
-    padding: 14px 20px; cursor: pointer; color: var(--muted);
-    border-bottom: 2px solid transparent; transition: all 0.2s;
-    white-space: nowrap; background: none; border-top: none; border-left: none; border-right: none;
-  }
-  .nav-tab:hover { color: var(--text); }
-  .nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-
-  main { padding: 32px 0 80px; }
-  .page { display: none; }
-  .page.active { display: block; }
-
-  .date-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
-  .date-label { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
-
-  .live-dot { display: flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 10px; color: #007a73; }
-  .live-dot::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #007a73; animation: pulse 2s infinite; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:var(--sans); font-weight:300; min-height:100vh; overflow-x:hidden; }
+  body::before { content:''; position:fixed; inset:0; background-image:linear-gradient(rgba(26,26,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(26,26,255,0.04) 1px,transparent 1px); background-size:40px 40px; pointer-events:none; z-index:0; }
+  .container { max-width:1200px; margin:0 auto; padding:0 24px; position:relative; z-index:1; }
+  header { border-bottom:1px solid var(--border); padding:20px 0; position:sticky; top:0; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); z-index:100; }
+  .header-inner { display:flex; align-items:center; justify-content:space-between; }
+  .logo { font-family:var(--mono); font-size:13px; letter-spacing:0.15em; color:var(--accent); text-transform:uppercase; }
+  .logo span { color:var(--muted); }
+  .header-right { display:flex; align-items:center; gap:16px; }
+  .header-tags { display:flex; gap:8px; }
+  .tag { font-family:var(--mono); font-size:10px; padding:4px 10px; border-radius:2px; letter-spacing:0.1em; font-weight:700; }
+  .tag-seo { background:rgba(26,94,255,0.1); color:var(--seo); border:1px solid rgba(26,94,255,0.25); }
+  .tag-aeo { background:rgba(176,138,0,0.1); color:var(--aeo); border:1px solid rgba(176,138,0,0.25); }
+  .tag-geo { background:rgba(196,0,110,0.1); color:var(--geo); border:1px solid rgba(196,0,110,0.25); }
+  .lang-toggle { display:flex; border:1px solid var(--border); border-radius:3px; overflow:hidden; }
+  .lang-btn { font-family:var(--mono); font-size:10px; letter-spacing:0.08em; padding:5px 10px; background:none; border:none; cursor:pointer; color:var(--muted); transition:all 0.15s; }
+  .lang-btn.active { background:var(--accent); color:#fff; }
+  .lang-btn:not(.active):hover { background:var(--bg3); color:var(--text); }
+  .nav-tabs { display:flex; border-bottom:1px solid var(--border); overflow-x:auto; }
+  .nav-tab { font-family:var(--mono); font-size:11px; letter-spacing:0.08em; padding:14px 20px; cursor:pointer; color:var(--muted); border-bottom:2px solid transparent; transition:all 0.2s; white-space:nowrap; background:none; border-top:none; border-left:none; border-right:none; }
+  .nav-tab:hover { color:var(--text); }
+  .nav-tab.active { color:var(--accent); border-bottom-color:var(--accent); }
+  main { padding:32px 0 80px; }
+  .page { display:none; }
+  .page.active { display:block; }
+  .date-bar { display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; }
+  .date-label { font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:0.1em; }
+  .live-dot { display:flex; align-items:center; gap:6px; font-family:var(--mono); font-size:10px; color:#007a73; }
+  .live-dot::before { content:''; width:6px; height:6px; border-radius:50%; background:#007a73; animation:pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
-
-  .priority-alert { border: 1px solid rgba(232,78,27,0.3); background: rgba(232,78,27,0.04); border-radius: 4px; padding: 16px 20px; margin-bottom: 20px; display: flex; gap: 14px; align-items: flex-start; }
-  .priority-icon { font-family: var(--mono); font-size: 10px; color: var(--accent3); background: rgba(232,78,27,0.08); padding: 4px 8px; border-radius: 2px; white-space: nowrap; margin-top: 2px; }
-  .priority-content h3 { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
-  .priority-content p { font-size: 13px; color: var(--muted); line-height: 1.6; }
-
-  .legend { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
-  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); }
-  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
-
-  .report-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
-  @media (max-width: 768px) { .report-grid { grid-template-columns: 1fr; } }
-
-  .report-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; padding: 20px; transition: border-color 0.2s; }
-  .report-card:hover { border-color: rgba(26,26,255,0.2); }
-  .report-card.full { grid-column: 1 / -1; }
-
-  .card-meta { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
-  .meta-pill { font-family: var(--mono); font-size: 9px; padding: 3px 8px; border-radius: 2px; letter-spacing: 0.08em; font-weight: 700; text-transform: uppercase; }
-
-  .cat-strategy   { background: rgba(100,60,220,0.08); color: #5a32cc; border: 1px solid rgba(100,60,220,0.2); }
-  .cat-execution  { background: rgba(0,148,140,0.08);  color: #007a73; border: 1px solid rgba(0,148,140,0.2); }
-  .cat-measurement{ background: rgba(176,120,0,0.08);  color: #8a5e00; border: 1px solid rgba(176,120,0,0.2); }
-  .cat-market     { background: rgba(196,0,110,0.08);  color: var(--geo); border: 1px solid rgba(196,0,110,0.2); }
-
-  .cred-official  { background: rgba(0,140,80,0.08);   color: #006e3c; border: 1px solid rgba(0,140,80,0.2); }
-  .cred-research  { background: rgba(26,94,255,0.08);  color: var(--seo); border: 1px solid rgba(26,94,255,0.2); }
-  .cred-opinion   { background: rgba(176,120,0,0.08);  color: #8a5e00; border: 1px solid rgba(176,120,0,0.2); }
-  .cred-unverified{ background: rgba(232,78,27,0.08);  color: var(--accent3); border: 1px solid rgba(232,78,27,0.2); }
-
-  .card-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
-  .card-body  { font-size: 12.5px; color: var(--muted); line-height: 1.7; margin-bottom: 14px; white-space: pre-line; }
-  .card-action { font-family: var(--mono); font-size: 11px; color: var(--accent); border-top: 1px solid var(--border); padding-top: 12px; line-height: 1.5; }
-  .card-action::before { content: '→ '; }
-
-  .action-section { background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; padding: 20px; margin-bottom: 20px; }
-  .section-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 16px; text-transform: uppercase; }
-
-  .action-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
-  .action-item:last-child { border-bottom: none; }
-
-  .action-priority { font-family: var(--mono); font-size: 9px; padding: 3px 7px; border-radius: 2px; white-space: nowrap; margin-top: 2px; }
-  .p-high { background: rgba(232,78,27,0.1); color: #b03010; }
-  .p-mid  { background: rgba(176,120,0,0.1); color: #8a5e00; }
-  .p-low  { background: rgba(122,122,144,0.1); color: var(--muted); }
-
-  .action-text { font-size: 13px; color: var(--text); line-height: 1.5; }
-  .action-text span { color: var(--muted); font-size: 12px; }
-
-  /* Tracker */
-  .tracker-section { margin-bottom: 32px; }
-  .tracker-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; margin-bottom: 12px; }
-
-  .tracker-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-  .tracker-table th { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--border); background: var(--bg3); }
-  .tracker-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; line-height: 1.5; }
-  .tracker-table tr:hover td { background: rgba(26,26,255,0.02); }
-  .tracker-table td a { color: var(--accent); text-decoration: none; font-family: var(--mono); font-size: 10px; }
-  .tracker-table td a:hover { text-decoration: underline; }
-
-  .trend-up     { color: #006e3c; font-family: var(--mono); font-size: 11px; }
-  .trend-down   { color: #b03010; font-family: var(--mono); font-size: 11px; }
-  .trend-stable { color: var(--muted); font-family: var(--mono); font-size: 11px; }
-
-  .top-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-
-  .export-btn { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; padding: 8px 16px; background: rgba(26,26,255,0.06); color: var(--accent); border: 1px solid rgba(26,26,255,0.2); border-radius: 2px; cursor: pointer; transition: all 0.2s; }
-  .export-btn:hover { background: rgba(26,26,255,0.12); }
-
-  /* Framework */
-  .kb-header { margin-bottom: 28px; }
-  .kb-header h2 { font-size: 22px; font-weight: 500; margin-bottom: 6px; }
-  .kb-header p { font-size: 13px; color: var(--muted); }
-
-  .kb-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-  @media (max-width: 900px) { .kb-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 600px) { .kb-grid { grid-template-columns: 1fr; } }
-
-  .kb-col { background: var(--bg2); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
-  .kb-col-header { padding: 14px 16px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid var(--border); }
-  .col-seo { color: var(--seo); background: rgba(26,94,255,0.05); }
-  .col-aeo { color: var(--aeo); background: rgba(176,138,0,0.05); }
-  .col-geo { color: var(--geo); background: rgba(196,0,110,0.05); }
-
-  .kb-section { border-bottom: 1px solid var(--border); padding: 12px 16px; }
-  .kb-section:last-child { border-bottom: none; }
-  .kb-section-title { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; text-transform: uppercase; }
-
-  .kb-item { display: flex; align-items: center; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--border); }
-  .kb-item:last-child { border-bottom: none; }
-  .kb-item-name { font-size: 12px; color: var(--text); }
-  .kb-item-status { font-family: var(--mono); font-size: 9px; padding: 2px 6px; border-radius: 2px; }
-
-  .status-tracked  { background: rgba(0,140,80,0.08);  color: #006e3c; }
-  .status-emerging { background: rgba(176,120,0,0.08); color: #8a5e00; }
-  .status-new      { background: rgba(232,78,27,0.08); color: #b03010; }
-  .status-stable   { background: rgba(122,122,144,0.1); color: var(--muted); }
-
-  ::-webkit-scrollbar { width: 4px; height: 4px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  .priority-alert { border:1px solid rgba(232,78,27,0.3); background:rgba(232,78,27,0.04); border-radius:4px; padding:16px 20px; margin-bottom:20px; display:flex; gap:14px; align-items:flex-start; }
+  .priority-icon { font-family:var(--mono); font-size:10px; color:var(--accent3); background:rgba(232,78,27,0.08); padding:4px 8px; border-radius:2px; white-space:nowrap; margin-top:2px; }
+  .priority-content h3 { font-size:14px; font-weight:500; color:var(--text); margin-bottom:4px; }
+  .priority-content p { font-size:13px; color:var(--muted); line-height:1.6; }
+  .legend { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:24px; }
+  .legend-item { display:flex; align-items:center; gap:6px; font-size:11px; color:var(--muted); }
+  .legend-dot { width:8px; height:8px; border-radius:50%; }
+  .report-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px; }
+  @media (max-width:768px) { .report-grid { grid-template-columns:1fr; } }
+  .report-card { background:var(--bg2); border:1px solid var(--border); border-radius:4px; padding:20px; transition:border-color 0.2s; }
+  .report-card:hover { border-color:rgba(26,26,255,0.2); }
+  .report-card.full { grid-column:1/-1; }
+  .card-meta { display:flex; gap:6px; margin-bottom:12px; flex-wrap:wrap; }
+  .meta-pill { font-family:var(--mono); font-size:9px; padding:3px 8px; border-radius:2px; letter-spacing:0.08em; font-weight:700; text-transform:uppercase; }
+  .cat-strategy   { background:rgba(100,60,220,0.08);  color:#5a32cc;      border:1px solid rgba(100,60,220,0.2); }
+  .cat-execution  { background:rgba(0,148,140,0.08);   color:#007a73;      border:1px solid rgba(0,148,140,0.2); }
+  .cat-measurement{ background:rgba(176,120,0,0.08);   color:#8a5e00;      border:1px solid rgba(176,120,0,0.2); }
+  .cat-market     { background:rgba(196,0,110,0.08);   color:var(--geo);   border:1px solid rgba(196,0,110,0.2); }
+  .cred-official  { background:rgba(0,140,80,0.08);    color:#006e3c;      border:1px solid rgba(0,140,80,0.2); }
+  .cred-research  { background:rgba(26,94,255,0.08);   color:var(--seo);   border:1px solid rgba(26,94,255,0.2); }
+  .cred-opinion   { background:rgba(176,120,0,0.08);   color:#8a5e00;      border:1px solid rgba(176,120,0,0.2); }
+  .cred-unverified{ background:rgba(232,78,27,0.08);   color:var(--accent3);border:1px solid rgba(232,78,27,0.2); }
+  .card-title { font-size:14px; font-weight:500; color:var(--text); margin-bottom:8px; line-height:1.5; }
+  .card-body  { font-size:12.5px; color:var(--muted); line-height:1.7; margin-bottom:14px; white-space:pre-line; }
+  .card-action { font-family:var(--mono); font-size:11px; color:var(--accent); border-top:1px solid var(--border); padding-top:12px; line-height:1.5; }
+  .card-action::before { content:'→ '; }
+  .action-section { background:var(--bg2); border:1px solid var(--border); border-radius:4px; padding:20px; margin-bottom:20px; }
+  .section-title { font-family:var(--mono); font-size:11px; letter-spacing:0.12em; color:var(--muted); margin-bottom:16px; text-transform:uppercase; }
+  .action-item { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid var(--border); align-items:flex-start; }
+  .action-item:last-child { border-bottom:none; }
+  .action-priority { font-family:var(--mono); font-size:9px; padding:3px 7px; border-radius:2px; white-space:nowrap; margin-top:2px; }
+  .p-high { background:rgba(232,78,27,0.1); color:#b03010; }
+  .p-mid  { background:rgba(176,120,0,0.1); color:#8a5e00; }
+  .p-low  { background:rgba(122,122,144,0.1); color:var(--muted); }
+  .action-text { font-size:13px; color:var(--text); line-height:1.5; }
+  .action-text span { color:var(--muted); font-size:12px; }
+  .tracker-section { margin-bottom:32px; }
+  .tracker-title { font-family:var(--mono); font-size:11px; letter-spacing:0.12em; color:var(--muted); text-transform:uppercase; margin-bottom:12px; }
+  .tracker-table { width:100%; border-collapse:collapse; font-size:12px; }
+  .tracker-table th { font-family:var(--mono); font-size:9px; letter-spacing:0.1em; color:var(--muted); text-transform:uppercase; text-align:left; padding:8px 12px; border-bottom:1px solid var(--border); background:var(--bg3); }
+  .tracker-table td { padding:10px 12px; border-bottom:1px solid var(--border); color:var(--text); vertical-align:top; line-height:1.5; }
+  .tracker-table tr:hover td { background:rgba(26,26,255,0.02); }
+  .tracker-table td a { color:var(--accent); text-decoration:none; font-family:var(--mono); font-size:10px; }
+  .tracker-table td a:hover { text-decoration:underline; }
+  .trend-up     { color:#006e3c; font-family:var(--mono); font-size:11px; }
+  .trend-down   { color:#b03010; font-family:var(--mono); font-size:11px; }
+  .trend-stable { color:var(--muted); font-family:var(--mono); font-size:11px; }
+  .top-bar { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+  .export-btn { font-family:var(--mono); font-size:11px; letter-spacing:0.08em; padding:8px 16px; background:rgba(26,26,255,0.06); color:var(--accent); border:1px solid rgba(26,26,255,0.2); border-radius:2px; cursor:pointer; transition:all 0.2s; }
+  .export-btn:hover { background:rgba(26,26,255,0.12); }
+  .kb-header { margin-bottom:28px; }
+  .kb-header h2 { font-size:22px; font-weight:500; margin-bottom:6px; }
+  .kb-header p { font-size:13px; color:var(--muted); }
+  .kb-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  @media (max-width:900px) { .kb-grid { grid-template-columns:1fr 1fr; } }
+  @media (max-width:600px) { .kb-grid { grid-template-columns:1fr; } }
+  .kb-col { background:var(--bg2); border:1px solid var(--border); border-radius:4px; overflow:hidden; }
+  .kb-col-header { padding:14px 16px; font-family:var(--mono); font-size:11px; letter-spacing:0.1em; font-weight:700; text-transform:uppercase; border-bottom:1px solid var(--border); }
+  .col-seo { color:var(--seo); background:rgba(26,94,255,0.05); }
+  .col-aeo { color:var(--aeo); background:rgba(176,138,0,0.05); }
+  .col-geo { color:var(--geo); background:rgba(196,0,110,0.05); }
+  .kb-section { border-bottom:1px solid var(--border); padding:12px 16px; }
+  .kb-section:last-child { border-bottom:none; }
+  .kb-section-title { font-family:var(--mono); font-size:10px; letter-spacing:0.08em; color:var(--muted); margin-bottom:8px; text-transform:uppercase; }
+  .kb-item { display:flex; align-items:center; justify-content:space-between; padding:5px 0; border-bottom:1px solid var(--border); }
+  .kb-item:last-child { border-bottom:none; }
+  .kb-item-name { font-size:12px; color:var(--text); }
+  .kb-item-status { font-family:var(--mono); font-size:9px; padding:2px 6px; border-radius:2px; }
+  .status-tracked  { background:rgba(0,140,80,0.08);   color:#006e3c; }
+  .status-emerging { background:rgba(176,120,0,0.08);  color:#8a5e00; }
+  .status-new      { background:rgba(232,78,27,0.08);  color:#b03010; }
+  .status-stable   { background:rgba(122,122,144,0.1); color:var(--muted); }
+  ::-webkit-scrollbar { width:4px; height:4px; }
+  ::-webkit-scrollbar-track { background:var(--bg); }
+  ::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
 </style>
 </head>
 <body>
@@ -239,15 +140,15 @@
       </div>
     </div>
   </div>
-<script src="data.js"></script>
-<script src="data_en.js"></script>
+  <script src="data.js"></script>
+  <script src="data_en.js"></script>
 </header>
 
 <div class="container">
   <div class="nav-tabs">
-    <button class="nav-tab active" id="tab-daily" onclick="showPage('daily',this)" data-en="Daily Intel" data-zh="每日情報">Daily Intel</button>
-    <button class="nav-tab" id="tab-tracker" onclick="showPage('tracker',this)" data-en="Tracker Library" data-zh="追蹤工具庫">Tracker Library</button>
-    <button class="nav-tab" id="tab-framework" onclick="showPage('framework',this)" data-en="Framework" data-zh="知識框架">Framework</button>
+    <button class="nav-tab active" id="tab-daily"     onclick="showPage('daily',this)"     data-en="Daily Intel"      data-zh="每日情報">Daily Intel</button>
+    <button class="nav-tab"        id="tab-tracker"   onclick="showPage('tracker',this)"   data-en="Tracker Library"  data-zh="追蹤工具庫">Tracker Library</button>
+    <button class="nav-tab"        id="tab-framework" onclick="showPage('framework',this)" data-en="Framework"        data-zh="知識框架">Framework</button>
   </div>
 </div>
 
@@ -260,9 +161,7 @@
     <div class="date-label" id="date-label"></div>
     <div class="live-dot">LIVE</div>
   </div>
-
   <div class="legend" id="legend-bar"></div>
-
   <div id="priority-alert"></div>
   <div class="report-grid" id="cards-grid"></div>
   <div class="action-section">
@@ -294,76 +193,76 @@
     <div class="kb-col">
       <div class="kb-col-header col-seo" id="kb-seo-header">SEO · Search Engine Optimization</div>
       <div class="kb-section"><div class="kb-section-title">On-page</div>
-        <div class="kb-item"><span class="kb-item-name">Keyword Strategy</span><span class="kb-item-status status-stable" data-en="Stable" data-zh="穩定">Stable</span></div>
+        <div class="kb-item"><span class="kb-item-name">Keyword Strategy</span><span class="kb-item-status status-stable"   data-en="Stable"   data-zh="穩定">Stable</span></div>
         <div class="kb-item"><span class="kb-item-name">Semantic Clustering</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
-        <div class="kb-item"><span class="kb-item-name">Content Depth</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
-        <div class="kb-item"><span class="kb-item-name">E-E-A-T Signals</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Content Depth</span><span class="kb-item-status status-tracked"      data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">E-E-A-T Signals</span><span class="kb-item-status status-tracked"    data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
       </div>
       <div class="kb-section"><div class="kb-section-title">Technical</div>
-        <div class="kb-item"><span class="kb-item-name">Core Web Vitals</span><span class="kb-item-status status-stable" data-en="Stable" data-zh="穩定">Stable</span></div>
-        <div class="kb-item"><span class="kb-item-name">Crawlability</span><span class="kb-item-status status-stable" data-en="Stable" data-zh="穩定">Stable</span></div>
-        <div class="kb-item"><span class="kb-item-name">Mobile UX</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Core Web Vitals</span><span class="kb-item-status status-stable"     data-en="Stable"   data-zh="穩定">Stable</span></div>
+        <div class="kb-item"><span class="kb-item-name">Crawlability</span><span class="kb-item-status status-stable"        data-en="Stable"   data-zh="穩定">Stable</span></div>
+        <div class="kb-item"><span class="kb-item-name">Mobile UX</span><span class="kb-item-status status-tracked"          data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
       </div>
       <div class="kb-section"><div class="kb-section-title">Off-page</div>
-        <div class="kb-item"><span class="kb-item-name">Backlink Quality</span><span class="kb-item-status status-stable" data-en="Stable" data-zh="穩定">Stable</span></div>
-        <div class="kb-item"><span class="kb-item-name">Digital PR</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Backlink Quality</span><span class="kb-item-status status-stable"    data-en="Stable"   data-zh="穩定">Stable</span></div>
+        <div class="kb-item"><span class="kb-item-name">Digital PR</span><span class="kb-item-status status-tracked"         data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
       </div>
       <div class="kb-section"><div class="kb-section-title" data-en="Algorithm" data-zh="演算法">Algorithm</div>
-        <div class="kb-item"><span class="kb-item-name">Core Updates</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
-        <div class="kb-item"><span class="kb-item-name">Spam Updates</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
-        <div class="kb-item"><span class="kb-item-name">Helpful Content</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Core Updates</span><span class="kb-item-status status-tracked"       data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Spam Updates</span><span class="kb-item-status status-tracked"       data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Helpful Content</span><span class="kb-item-status status-tracked"    data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
       </div>
     </div>
     <div class="kb-col">
       <div class="kb-col-header col-aeo" id="kb-aeo-header">AEO · Answer Engine Optimization</div>
       <div class="kb-section"><div class="kb-section-title">On-page</div>
-        <div class="kb-item"><span class="kb-item-name">Extractability</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Extractability</span><span class="kb-item-status status-tracked"        data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
         <div class="kb-item"><span class="kb-item-name">Answer-first Structure</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
-        <div class="kb-item"><span class="kb-item-name">Schema Markup</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
-        <div class="kb-item"><span class="kb-item-name">Relevance / Intent</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
-        <div class="kb-item"><span class="kb-item-name">Content Format (HTML)</span><span class="kb-item-status status-new" data-en="New" data-zh="新發現">New</span></div>
+        <div class="kb-item"><span class="kb-item-name">Schema Markup</span><span class="kb-item-status status-tracked"          data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Relevance / Intent</span><span class="kb-item-status status-tracked"     data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Content Format (HTML)</span><span class="kb-item-status status-new"      data-en="New"      data-zh="新發現">New</span></div>
       </div>
       <div class="kb-section"><div class="kb-section-title">Off-page</div>
-        <div class="kb-item"><span class="kb-item-name">Citation Density</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
-        <div class="kb-item"><span class="kb-item-name">Platform Presence</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
-        <div class="kb-item"><span class="kb-item-name">Industry Publications</span><span class="kb-item-status status-emerging" data-en="Growing" data-zh="成長中">Growing</span></div>
+        <div class="kb-item"><span class="kb-item-name">Citation Density</span><span class="kb-item-status status-tracked"       data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Platform Presence</span><span class="kb-item-status status-tracked"      data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Industry Publications</span><span class="kb-item-status status-emerging"  data-en="Growing"  data-zh="成長中">Growing</span></div>
       </div>
       <div class="kb-section"><div class="kb-section-title">Authority</div>
-        <div class="kb-item"><span class="kb-item-name">E-E-A-T</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
-        <div class="kb-item"><span class="kb-item-name">Brand Mentions</span><span class="kb-item-status status-emerging" data-en="Growing" data-zh="成長中">Growing</span></div>
-        <div class="kb-item"><span class="kb-item-name">Thought Leadership</span><span class="kb-item-status status-emerging" data-en="Growing" data-zh="成長中">Growing</span></div>
+        <div class="kb-item"><span class="kb-item-name">E-E-A-T</span><span class="kb-item-status status-tracked"                data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Brand Mentions</span><span class="kb-item-status status-emerging"         data-en="Growing"  data-zh="成長中">Growing</span></div>
+        <div class="kb-item"><span class="kb-item-name">Thought Leadership</span><span class="kb-item-status status-emerging"     data-en="Growing"  data-zh="成長中">Growing</span></div>
       </div>
       <div class="kb-section"><div class="kb-section-title">Technical</div>
-        <div class="kb-item"><span class="kb-item-name">Robots.txt (AI Bots)</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
-        <div class="kb-item"><span class="kb-item-name">llms.txt</span><span class="kb-item-status status-emerging" data-en="Growing" data-zh="成長中">Growing</span></div>
-        <div class="kb-item"><span class="kb-item-name">Structured Data</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Robots.txt (AI Bots)</span><span class="kb-item-status status-tracked"   data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">llms.txt</span><span class="kb-item-status status-emerging"              data-en="Growing"  data-zh="成長中">Growing</span></div>
+        <div class="kb-item"><span class="kb-item-name">Structured Data</span><span class="kb-item-status status-tracked"        data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
       </div>
     </div>
     <div class="kb-col">
       <div class="kb-col-header col-geo" id="kb-geo-header">GEO · Generative Engine Optimization</div>
       <div class="kb-section"><div class="kb-section-title" data-en="Platform Coverage" data-zh="平台布局">Platform Coverage</div>
-        <div class="kb-item"><span class="kb-item-name">ChatGPT Search</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
-        <div class="kb-item"><span class="kb-item-name">Google AI Overviews</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
-        <div class="kb-item"><span class="kb-item-name">Perplexity</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
-        <div class="kb-item"><span class="kb-item-name">Grok / X</span><span class="kb-item-status status-emerging" data-en="Growing" data-zh="成長中">Growing</span></div>
-        <div class="kb-item"><span class="kb-item-name">Claude</span><span class="kb-item-status status-emerging" data-en="Growing" data-zh="成長中">Growing</span></div>
+        <div class="kb-item"><span class="kb-item-name">ChatGPT Search</span><span class="kb-item-status status-tracked"         data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Google AI Overviews</span><span class="kb-item-status status-tracked"    data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Perplexity</span><span class="kb-item-status status-tracked"             data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Grok / X</span><span class="kb-item-status status-emerging"              data-en="Growing"  data-zh="成長中">Growing</span></div>
+        <div class="kb-item"><span class="kb-item-name">Claude</span><span class="kb-item-status status-emerging"                data-en="Growing"  data-zh="成長中">Growing</span></div>
       </div>
       <div class="kb-section"><div class="kb-section-title" data-en="Content Strategy" data-zh="內容策略">Content Strategy</div>
-        <div class="kb-item"><span class="kb-item-name">Information Gain</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
-        <div class="kb-item"><span class="kb-item-name">Original Research</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
-        <div class="kb-item"><span class="kb-item-name">Freshness</span><span class="kb-item-status status-emerging" data-en="Growing" data-zh="成長中">Growing</span></div>
+        <div class="kb-item"><span class="kb-item-name">Information Gain</span><span class="kb-item-status status-tracked"       data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Original Research</span><span class="kb-item-status status-tracked"      data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Freshness</span><span class="kb-item-status status-emerging"             data-en="Growing"  data-zh="成長中">Growing</span></div>
       </div>
       <div class="kb-section"><div class="kb-section-title" data-en="Measurement" data-zh="量測">Measurement</div>
-        <div class="kb-item"><span class="kb-item-name">Brand Mention Rate</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
-        <div class="kb-item"><span class="kb-item-name">Citation Stability</span><span class="kb-item-status status-new" data-en="New" data-zh="新發現">New</span></div>
-        <div class="kb-item"><span class="kb-item-name">AI Traffic Share</span><span class="kb-item-status status-tracked" data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
-        <div class="kb-item"><span class="kb-item-name">Share of Model</span><span class="kb-item-status status-emerging" data-en="Growing" data-zh="成長中">Growing</span></div>
+        <div class="kb-item"><span class="kb-item-name">Brand Mention Rate</span><span class="kb-item-status status-tracked"     data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Citation Stability</span><span class="kb-item-status status-new"         data-en="New"      data-zh="新發現">New</span></div>
+        <div class="kb-item"><span class="kb-item-name">AI Traffic Share</span><span class="kb-item-status status-tracked"       data-en="Tracking" data-zh="追蹤中">Tracking</span></div>
+        <div class="kb-item"><span class="kb-item-name">Share of Model</span><span class="kb-item-status status-emerging"        data-en="Growing"  data-zh="成長中">Growing</span></div>
       </div>
       <div class="kb-section"><div class="kb-section-title" data-en="Tools" data-zh="工具">Tools</div>
-        <div class="kb-item"><span class="kb-item-name">HubSpot AEO Grader</span><span class="kb-item-status status-tracked" data-en="Free" data-zh="免費">Free</span></div>
-        <div class="kb-item"><span class="kb-item-name">Semrush AI Toolkit</span><span class="kb-item-status status-tracked" data-en="Paid" data-zh="付費">Paid</span></div>
-        <div class="kb-item"><span class="kb-item-name">Profound</span><span class="kb-item-status status-tracked" data-en="Enterprise" data-zh="企業">Enterprise</span></div>
-        <div class="kb-item"><span class="kb-item-name">Scrunch</span><span class="kb-item-status status-emerging" data-en="Mid-market" data-zh="中市場">Mid-market</span></div>
+        <div class="kb-item"><span class="kb-item-name">HubSpot AEO Grader</span><span class="kb-item-status status-tracked"    data-en="Free"       data-zh="免費">Free</span></div>
+        <div class="kb-item"><span class="kb-item-name">Semrush AI Toolkit</span><span class="kb-item-status status-tracked"    data-en="Paid"       data-zh="付費">Paid</span></div>
+        <div class="kb-item"><span class="kb-item-name">Profound</span><span class="kb-item-status status-tracked"              data-en="Enterprise" data-zh="企業">Enterprise</span></div>
+        <div class="kb-item"><span class="kb-item-name">Scrunch</span><span class="kb-item-status status-emerging"              data-en="Mid-market" data-zh="中市場">Mid-market</span></div>
       </div>
     </div>
   </div>
@@ -372,177 +271,114 @@
 
 </div><!-- end container -->
 
-<!-- Tracker data — updated by Claude alongside data.js -->
-<script id="tracker-data">
-const TRACKER = {
-  AEO: [
-    { cat:"On-page",   cat_zh:"On-page",   item:"Extractability",           note:"Lead with complete answer in first sentence; each paragraph self-contained",          note_zh:"開頭一句給完整答案；每段可獨立成立",              update:"AI retrieval weights definitional sentences highly (Ahrefs, 2026.04)",    update_zh:"AI 檢索系統對定義句權重高（Ahrefs, 2026.04）",  trend:"up",     cred:"research",  ref:"https://ahrefs.com/blog/ai-overview-citations-top-10/" },
-    { cat:"On-page",   cat_zh:"On-page",   item:"Schema Markup",             note:"FAQ / How-to / Article schema",                                                       note_zh:"FAQ / How-to / Article schema",                  update:"Highest single-fix ROI by industry consensus",                            update_zh:"單一最高投報率技術修復（業界共識）",             trend:"up",     cred:"opinion",   ref:"https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data" },
-    { cat:"On-page",   cat_zh:"On-page",   item:"Relevance",                 note:"Semantic richness; full intent coverage",                                              note_zh:"語義豐富、涵蓋完整意圖",                         update:"GEO interprets intent, not keyword matching (Google, 2026)",               update_zh:"GEO 解讀意圖而非匹配關鍵字（Google, 2026）",   trend:"up",     cred:"official",  ref:"https://developers.google.com/search/blog" },
-    { cat:"On-page",   cat_zh:"On-page",   item:"Content Format (HTML) 🆕",  note:"HTML only; .md format ignored by AI crawlers",                                        note_zh:"只支援 HTML；忽略 .md 格式",                     update:"Confirmed by OtterlyAI experiments (2026.04)",                            update_zh:"OtterlyAI 實驗確認（2026.04）",                trend:"stable", cred:"research",  ref:"https://www.otterly.ai/" },
-    { cat:"Off-page",  cat_zh:"Off-page",  item:"Citation Density",          note:"10+ independent domains citing → 3.2x citation rate increase",                        note_zh:"10+ 獨立網域引用 → 引用率提升3.2倍",             update:"Third-party citations 6.5x more effective than owned domains (Ahrefs)",   update_zh:"第三方引用是自有網域的6.5倍效果（Ahrefs）",    trend:"up",     cred:"research",  ref:"https://ahrefs.com/blog/search-rankings-ai-citations/" },
-    { cat:"Off-page",  cat_zh:"Off-page",  item:"Platform Presence",         note:"Reddit / LinkedIn / YouTube first priority",                                          note_zh:"Reddit / LinkedIn / YouTube 優先",               update:"Top 3 most-cited platforms across major LLMs (multiple sources)",          update_zh:"三個是主要 LLM 最常引用的平台（多來源）",       trend:"up",     cred:"research",  ref:"https://ahrefs.com/blog/ai-overview-citations-top-10/" },
-    { cat:"Authority", cat_zh:"Authority", item:"E-E-A-T",                   note:"Author credentials, first-hand experience, citable perspective",                      note_zh:"作者資歷、第一手經驗、可引用的觀點",             update:"Core Update penalizes content lacking human editorial oversight (2026.04)",update_zh:"Core Update 懲罰缺乏人工監督的內容（2026.04）",trend:"up",     cred:"official",  ref:"https://developers.google.com/search/blog/2026/04/back-button-hijacking" },
-    { cat:"Authority", cat_zh:"Authority", item:"Domain Authority",          note:"Traditional DA has limited impact on AI citation selection",                          note_zh:"傳統 DA 對 AI 引用影響有限",                     update:"Content depth and readability matter more than DA (Ahrefs)",              update_zh:"內容深度和可讀性比 DA 更重要（Ahrefs）",        trend:"down",   cred:"research",  ref:"https://ahrefs.com/blog/the-great-decoupling/" },
-    { cat:"Technical", cat_zh:"Technical", item:"Robots.txt",                note:"Explicitly allow GPTBot / Google-Extended",                                           note_zh:"明確允許 GPTBot / Google-Extended",              update:"Baseline config — verify immediately",                                    update_zh:"基礎配置，應立即確認",                          trend:"stable", cred:"official",  ref:"https://developers.google.com/search/docs/crawling-indexing/overview" },
-    { cat:"Technical", cat_zh:"Technical", item:"llms.txt",                  note:"Emerging format, similar to robots.txt but for LLMs",                                 note_zh:"新興格式，類似 robots.txt for LLMs",             update:"Widely discussed; actual impact still unclear (2026.04)",                 update_zh:"討論多，實際影響尚不明確（2026.04）",           trend:"stable", cred:"unverified",ref:"https://llmstxt.org/" },
-  ],
-  GEO: [
-    { cat:"Platform",  cat_zh:"平台布局",  item:"ChatGPT",                  note:"34.5% of queries activate search mode",                                               note_zh:"34.5% 查詢啟用搜尋",                            update:"Market share fell to 61.7% (Similarweb, 2026.02)",                        update_zh:"市場份額跌至61.7%（Similarweb, 2026.02）",     trend:"down",   cred:"research",  ref:"https://www.similarweb.com/" },
-    { cat:"Platform",  cat_zh:"平台布局",  item:"Gemini",                   note:"Google AI Overviews optimization logic mirrors SEO",                                  note_zh:"Google AI Overviews 優化邏輯近似 SEO",           update:"Market share surged to 24.4% (Similarweb, 2026.02)",                      update_zh:"市場份額急升至24.4%（Similarweb, 2026.02）",   trend:"up",     cred:"research",  ref:"https://www.similarweb.com/" },
-    { cat:"Platform",  cat_zh:"平台布局",  item:"Perplexity",               note:"High raw-source citation ratio",                                                      note_zh:"原始資料引用比例高",                             update:"Share stable ~1.8%",                                                      update_zh:"份額穩定 ~1.8%",                               trend:"stable", cred:"research",  ref:"https://www.perplexity.ai/" },
-    { cat:"Measure",   cat_zh:"量測",      item:"Brand Mention Rate",        note:"Track brand appearance frequency in AI responses",                                    note_zh:"追蹤品牌在 AI 回應中的出現頻率",                update:"HubSpot AEO Grader — free baseline test",                                 update_zh:"HubSpot AEO Grader 免費測試",                  trend:"up",     cred:"opinion",   ref:"https://www.hubspot.com/ai-search-grader" },
-    { cat:"Measure",   cat_zh:"量測",      item:"Citation Stability 🆕",     note:"40–60% of citation sources change monthly",                                          note_zh:"40-60% 引用來源每月更換",                       update:"GEO visibility far less stable than SEO (eMarketer, 2026)",               update_zh:"GEO 能見度遠不如 SEO 穩定（eMarketer, 2026）", trend:"stable", cred:"research",  ref:"https://www.emarketer.com/" },
-    { cat:"Content",   cat_zh:"內容策略",  item:"Information Gain",          note:"Provide perspectives, data, and first-hand experience unavailable elsewhere",        note_zh:"提供他人沒有的觀點、數據、第一手經驗",           update:"Core Update strengthens this signal; AI citations favor original data",   update_zh:"Core Update 強化此信號；AI 引用偏好原創資料",  trend:"up",     cred:"official",  ref:"https://developers.google.com/search/docs/appearance/helpful-content-system" },
-  ],
-  SEO: [
-    { cat:"Algorithm", cat_zh:"演算法",    item:"Core Update Cadence",       note:"3 updates appeared in Q1 2026",                                                      note_zh:"2026 Q1 出現三個更新",                           update:"March Core Update completed April 8 (Google official)",                   update_zh:"March Core Update 4月8日完成（Google 官方）",  trend:"stable", cred:"official",  ref:"https://developers.google.com/search/blog" },
-    { cat:"Ranking",   cat_zh:"排名信號",  item:"Helpful Content",           note:"Human-supervised + AI-assisted > AI-only production",                                note_zh:"人工監督 + AI 輔助 > AI 獨立生產",               update:"Core Update penalizes AI content that replaces human input",              update_zh:"Core Update 懲罰 AI 替代人工的內容",           trend:"up",     cred:"opinion",   ref:"https://developers.google.com/search/docs/appearance/helpful-content-system" },
-    { cat:"Ranking",   cat_zh:"排名信號",  item:"Page-level Authority",      note:"Weak content on strong domains can still be penalized",                              note_zh:"弱內容即使在強網域也可能被懲罰",                 update:"March Update appears to evaluate page-level signals more aggressively",  update_zh:"March Update 疑似更積極評估頁面層級（分析師）",trend:"up",     cred:"unverified",ref:"https://www.seroundtable.com/google-march-2026-core-update-complete-41145.html" },
-    { cat:"Traffic",   cat_zh:"流量",      item:"AI Overview CTR Impact",    note:"AI Overviews reduce top-ranking CTR by 58%",                                         note_zh:"AI Overviews 使前排 CTR 下降 58%",               update:"Ahrefs research (worse than 34.5% last year)",                           update_zh:"Ahrefs 研究（比去年34.5%更嚴重）",             trend:"down",   cred:"research",  ref:"https://ahrefs.com/blog/the-great-decoupling/" },
-  ]
-};
-</script>
-
 <script>
-// ── i18n strings ─────────────────────────────────
+// ── i18n ─────────────────────────────────────────
 const i18n = {
   en: {
-    dateFormat: (d) => `// ${d.date} · ${d.weekday_en||'Sunday'} · Issue ${d.issue}`,
+    dateFormat:      d => `// ${d.date} · ${d.weekday_en||'Sunday'} · Issue ${d.issue}`,
     legendItems: [
-      {color:'#5a32cc', label:'Strategy'},
-      {color:'#007a73', label:'Execution'},
-      {color:'#8a5e00', label:'Measurement'},
-      {color:'#c4006e', label:'Market'},
-      {divider: true},
-      {color:'#006e3c', label:'Official'},
-      {color:'#1a5eff', label:'Research'},
-      {color:'#8a5e00', label:'Industry'},
-      {color:'#b03010', label:'Unverified'},
+      {color:'#5a32cc',label:'Strategy'},{color:'#007a73',label:'Execution'},
+      {color:'#8a5e00',label:'Measurement'},{color:'#c4006e',label:'Market'},
+      {divider:true},
+      {color:'#006e3c',label:'Official'},{color:'#1a5eff',label:'Research'},
+      {color:'#8a5e00',label:'Industry'},{color:'#b03010',label:'Unverified'},
     ],
-    catLabel:  { strategy:'Strategy', execution:'Execution', measurement:'Measurement', market:'Market' },
-    credLabel: { official:'Official', research:'Research', opinion:'Industry', unverified:'Unverified' },
-    actionsTitle: '// This Week\'s Action List',
+    catLabel:        { strategy:'Strategy', execution:'Execution', measurement:'Measurement', market:'Market' },
+    credLabel:       { official:'Official', research:'Research', opinion:'Industry', unverified:'Unverified' },
+    actionsTitle:    "// This Week's Action List",
     trackerSubtitle: '// Continuously updated tracker',
-    exportBtn: '↓ Export CSV',
-    trackerHeaders: ['Category','Item','Key Practice','Latest Update','Trend','Source','Reference'],
-    trackerNames: { AEO:'Answer Engine Optimization', GEO:'Generative Engine Optimization', SEO:'Search Engine Optimization' },
-    tabs: { daily:'Daily Intel', tracker:'Tracker Library', framework:'Framework' },
-    priorityLabel: (p) => `🔴 ${p.level}`,
-    actionLabels: { high:'Now', mid:'This Month', low:'Long-term' },
-    kbTitle: 'Knowledge Framework',
-    kbSubtitle: 'Complete taxonomy of the three-layer optimization system',
+    exportBtn:       '↓ Export CSV',
+    trackerHeaders:  ['Category','Item','Key Practice','Latest Update','Trend','Source','Reference'],
+    trackerNames:    { AEO:'Answer Engine Optimization', GEO:'Generative Engine Optimization', SEO:'Search Engine Optimization' },
+    tabs:            { daily:'Daily Intel', tracker:'Tracker Library', framework:'Framework' },
+    priorityLabel:   p => `🔴 ${p.level}`,
+    kbTitle:         'Knowledge Framework',
+    kbSubtitle:      'Complete taxonomy of the three-layer optimization system',
     kbSEO: 'SEO · Search Engine Optimization',
     kbAEO: 'AEO · Answer Engine Optimization',
     kbGEO: 'GEO · Generative Engine Optimization',
   },
   zh: {
-    dateFormat: (d) => `// ${d.date} · ${d.weekday||'週日'} · 第${d.issue}期`,
+    dateFormat:      d => `// ${d.date} · ${d.weekday||'週日'} · 第${d.issue}期`,
     legendItems: [
-      {color:'#5a32cc', label:'策略/方法論'},
-      {color:'#007a73', label:'具體執行'},
-      {color:'#8a5e00', label:'衡量效益'},
-      {color:'#c4006e', label:'針對市場'},
-      {divider: true},
-      {color:'#006e3c', label:'官方確認'},
-      {color:'#1a5eff', label:'研究數據'},
-      {color:'#8a5e00', label:'業界觀點'},
-      {color:'#b03010', label:'未驗證推論'},
+      {color:'#5a32cc',label:'策略/方法論'},{color:'#007a73',label:'具體執行'},
+      {color:'#8a5e00',label:'衡量效益'},{color:'#c4006e',label:'針對市場'},
+      {divider:true},
+      {color:'#006e3c',label:'官方確認'},{color:'#1a5eff',label:'研究數據'},
+      {color:'#8a5e00',label:'業界觀點'},{color:'#b03010',label:'未驗證推論'},
     ],
-    catLabel:  { strategy:'策略/方法論', execution:'具體執行', measurement:'衡量效益', market:'針對市場' },
-    credLabel: { official:'官方確認', research:'研究數據', opinion:'業界觀點', unverified:'未驗證推論' },
-    actionsTitle: '// 本週行動清單',
+    catLabel:        { strategy:'策略/方法論', execution:'具體執行', measurement:'衡量效益', market:'針對市場' },
+    credLabel:       { official:'官方確認', research:'研究數據', opinion:'業界觀點', unverified:'未驗證推論' },
+    actionsTitle:    '// 本週行動清單',
     trackerSubtitle: '// 持續更新工具庫',
-    exportBtn: '↓ 匯出 CSV',
-    trackerHeaders: ['類別','子項目','關鍵做法','最新動態','趨勢','信源','參考連結'],
-    trackerNames: { AEO:'Answer Engine Optimization', GEO:'Generative Engine Optimization', SEO:'Search Engine Optimization' },
-    tabs: { daily:'每日情報', tracker:'追蹤工具庫', framework:'知識框架' },
-    priorityLabel: (p) => `🔴 ${p.level}`,
-    actionLabels: { high:'立即', mid:'本月', low:'長期' },
-    kbTitle: '知識框架',
-    kbSubtitle: '三層優化體系的完整分類架構',
+    exportBtn:       '↓ 匯出 CSV',
+    trackerHeaders:  ['類別','子項目','關鍵做法','最新動態','趨勢','信源','參考連結'],
+    trackerNames:    { AEO:'Answer Engine Optimization', GEO:'Generative Engine Optimization', SEO:'Search Engine Optimization' },
+    tabs:            { daily:'每日情報', tracker:'追蹤工具庫', framework:'知識框架' },
+    priorityLabel:   p => `🔴 ${p.level}`,
+    kbTitle:         '知識框架',
+    kbSubtitle:      '三層優化體系的完整分類架構',
     kbSEO: 'SEO · 搜尋引擎優化',
     kbAEO: 'AEO · 答案引擎優化',
     kbGEO: 'GEO · 生成引擎優化',
   }
 };
 
-// ── State ─────────────────────────────────────────
+// ── State & helpers ───────────────────────────────
 let LANG = 'en';
-
-// ── Helpers ───────────────────────────────────────
-const catClass  = { strategy:'cat-strategy', execution:'cat-execution', measurement:'cat-measurement', market:'cat-market' };
-const credClass = { official:'cred-official', research:'cred-research', opinion:'cred-opinion', unverified:'cred-unverified' };
+const catClass    = { strategy:'cat-strategy', execution:'cat-execution', measurement:'cat-measurement', market:'cat-market' };
+const credClass   = { official:'cred-official', research:'cred-research', opinion:'cred-opinion', unverified:'cred-unverified' };
 const domainClass = { SEO:'tag-seo', AEO:'tag-aeo', GEO:'tag-geo' };
 const trendSymbol = { up:'↑', down:'↓', stable:'→' };
 const trendClass  = { up:'trend-up', down:'trend-down', stable:'trend-stable' };
+const pClass      = { high:'p-high', mid:'p-mid', low:'p-low' };
 
-function getLang() { return LANG; }
-function getT() { return i18n[LANG]; }
-function getData() { return LANG === 'en' ? (typeof INTEL_DATA_EN !== 'undefined' ? INTEL_DATA_EN : INTEL_DATA) : INTEL_DATA; }
+function getT()    { return i18n[LANG]; }
+// ── getData: reads from data file based on language ──
+// TRACKER is now inside getData().tracker — no longer in index.html
+function getData() { return LANG==='en' && typeof INTEL_DATA_EN!=='undefined' ? INTEL_DATA_EN : INTEL_DATA; }
 
-// ── Set language ──────────────────────────────────
+// ── Language switch ───────────────────────────────
 function setLang(lang) {
   LANG = lang;
   document.getElementById('btn-en').classList.toggle('active', lang==='en');
   document.getElementById('btn-zh').classList.toggle('active', lang==='zh');
-  document.documentElement.lang = lang === 'zh' ? 'zh-TW' : 'en';
-
-  // Update nav tabs text
+  document.documentElement.lang = lang==='zh' ? 'zh-TW' : 'en';
   const t = getT();
-  document.getElementById('tab-daily').textContent = t.tabs.daily;
-  document.getElementById('tab-tracker').textContent = t.tabs.tracker;
-  document.getElementById('tab-framework').textContent = t.tabs.framework;
-
-  // Update framework static text
-  document.getElementById('kb-title').textContent = t.kbTitle;
+  ['daily','tracker','framework'].forEach(id => {
+    document.getElementById('tab-'+id).textContent = t.tabs[id];
+  });
+  document.getElementById('kb-title').textContent   = t.kbTitle;
   document.getElementById('kb-subtitle').textContent = t.kbSubtitle;
   document.getElementById('kb-seo-header').textContent = t.kbSEO;
   document.getElementById('kb-aeo-header').textContent = t.kbAEO;
   document.getElementById('kb-geo-header').textContent = t.kbGEO;
-
-  // Update all [data-en]/[data-zh] elements in framework
   document.querySelectorAll('[data-en]').forEach(el => {
-    el.textContent = lang === 'en' ? el.dataset.en : el.dataset.zh;
+    el.textContent = lang==='en' ? el.dataset.en : el.dataset.zh;
   });
-
-  // Re-render dynamic content
   renderDaily();
-
-  // If tracker is visible, re-render it
-  if (document.getElementById('page-tracker').classList.contains('active')) {
-    renderTracker();
-  }
+  if (document.getElementById('page-tracker').classList.contains('active')) renderTracker();
 }
 
-// ── Render daily page ──────────────────────────────
+// ── Render: Daily ─────────────────────────────────
 function renderDaily() {
-  const d = getData();
-  const t = getT();
-
-  document.getElementById('date-label').textContent = t.dateFormat(d.meta);
+  const d = getData(), t = getT();
+  document.getElementById('date-label').textContent    = t.dateFormat(d.meta);
   document.getElementById('actions-title').textContent = t.actionsTitle;
   document.getElementById('tracker-subtitle').textContent = t.trackerSubtitle;
-  document.getElementById('export-btn').textContent = t.exportBtn;
+  document.getElementById('export-btn').textContent    = t.exportBtn;
 
-  // Legend
   document.getElementById('legend-bar').innerHTML = t.legendItems.map(item =>
     item.divider
       ? `<div style="width:1px;background:var(--border);margin:0 4px"></div>`
       : `<div class="legend-item"><div class="legend-dot" style="background:${item.color}"></div>${item.label}</div>`
   ).join('');
 
-  // Priority
   document.getElementById('priority-alert').innerHTML = `
     <div class="priority-icon">${t.priorityLabel(d.priority)}</div>
-    <div class="priority-content">
-      <h3>${d.priority.title}</h3>
-      <p>${d.priority.body}</p>
-    </div>`;
+    <div class="priority-content"><h3>${d.priority.title}</h3><p>${d.priority.body}</p></div>`;
 
-  // Cards
-  const grid = document.getElementById('cards-grid');
-  grid.innerHTML = d.cards.map(c => `
+  document.getElementById('cards-grid').innerHTML = d.cards.map(c => `
     <div class="report-card${c.full?' full':''}">
       <div class="card-meta">
         <span class="meta-pill ${domainClass[c.domain]}">${c.domain}</span>
@@ -554,8 +390,6 @@ function renderDaily() {
       <div class="card-action">${c.action}</div>
     </div>`).join('');
 
-  // Actions
-  const pClass = { high:'p-high', mid:'p-mid', low:'p-low' };
   document.getElementById('actions-list').innerHTML = d.actions.map(a => `
     <div class="action-item">
       <span class="action-priority ${pClass[a.priority]}">${a.label}</span>
@@ -563,71 +397,62 @@ function renderDaily() {
     </div>`).join('');
 }
 
-// ── Render tracker ────────────────────────────────
+// ── Render: Tracker — reads from getData().tracker ─
 function renderTracker() {
   const t = getT();
-  const out = document.getElementById('tracker-content');
-  out.innerHTML = Object.entries(TRACKER).map(([name, rows]) => `
+  const tracker = getData().tracker;   // ← from data.js / data_en.js
+  if (!tracker) { document.getElementById('tracker-content').innerHTML = '<p style="color:var(--muted);padding:20px">No tracker data found in data file.</p>'; return; }
+
+  document.getElementById('tracker-content').innerHTML = Object.entries(tracker).map(([name, rows]) => `
     <div class="tracker-section">
       <div class="tracker-title">// ${name} — ${t.trackerNames[name]}</div>
       <table class="tracker-table">
-        <thead><tr>
-          ${t.trackerHeaders.map(h=>`<th>${h}</th>`).join('')}
-        </tr></thead>
+        <thead><tr>${t.trackerHeaders.map(h=>`<th>${h}</th>`).join('')}</tr></thead>
         <tbody>${rows.map(r => {
-          const cat    = LANG==='zh' ? r.cat_zh : r.cat;
-          const note   = LANG==='zh' ? r.note_zh : r.note;
-          const update = LANG==='zh' ? r.update_zh : r.update;
-          const cred   = LANG==='zh' ? i18n.zh.credLabel[r.cred] : i18n.en.credLabel[r.cred];
           const refCell = r.ref
             ? `<a href="${r.ref}" target="_blank" rel="noopener">↗ link</a>`
             : `<span style="color:var(--border)">—</span>`;
           return `<tr>
-            <td><strong>${cat}</strong></td>
+            <td><strong>${r.cat}</strong></td>
             <td>${r.item}</td>
-            <td>${note}</td>
-            <td>${update}</td>
+            <td>${r.note}</td>
+            <td>${r.update}</td>
             <td class="${trendClass[r.trend]}">${trendSymbol[r.trend]}</td>
-            <td><span class="meta-pill ${credClass[r.cred]}" style="font-size:9px">${cred}</span></td>
+            <td><span class="meta-pill ${credClass[r.cred]}" style="font-size:9px">${t.credLabel[r.cred]}</span></td>
             <td>${refCell}</td>
           </tr>`;
-        }).join('')}
-        </tbody>
+        }).join('')}</tbody>
       </table>
     </div>`).join('');
 }
 
-// ── Nav ───────────────────────────────────────────
-function showPage(id, btn) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('page-' + id).classList.add('active');
-  if (btn) btn.classList.add('active');
-  if (id === 'tracker') renderTracker();
-}
-
-// ── Export CSV ────────────────────────────────────
+// ── Export CSV — reads from getData().tracker ──────
 function exportCSV() {
   const t = getT();
-  let csv = '\uFEFF'; // BOM for Excel
-  Object.entries(TRACKER).forEach(([name, rows]) => {
-    csv += `\n=== ${name} ===\n`;
-    csv += t.trackerHeaders.join(',') + '\n';
+  const tracker = getData().tracker;
+  if (!tracker) return;
+  let csv = '\uFEFF';
+  Object.entries(tracker).forEach(([name, rows]) => {
+    csv += `\n=== ${name} ===\n` + t.trackerHeaders.join(',') + '\n';
     rows.forEach(r => {
-      const cat    = LANG==='zh' ? r.cat_zh : r.cat;
-      const note   = LANG==='zh' ? r.note_zh : r.note;
-      const update = LANG==='zh' ? r.update_zh : r.update;
-      const cred   = LANG==='zh' ? i18n.zh.credLabel[r.cred] : i18n.en.credLabel[r.cred];
-      const values = [cat, r.item, note, update, trendSymbol[r.trend], cred, r.ref||''];
-      csv += values.map(v => `"${(v||'').replace(/"/g,'""')}"`).join(',') + '\n';
+      const vals = [r.cat, r.item, r.note, r.update, trendSymbol[r.trend], t.credLabel[r.cred], r.ref||''];
+      csv += vals.map(v=>`"${(v||'').replace(/"/g,'""')}"`).join(',') + '\n';
     });
   });
-  const date = getData().meta.date;
   const a = Object.assign(document.createElement('a'), {
-    href: URL.createObjectURL(new Blob([csv], {type:'text/csv;charset=utf-8;'})),
-    download: `search-intel-${date}.csv`
+    href: URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'})),
+    download: `search-intel-${getData().meta.date}.csv`
   });
   a.click();
+}
+
+// ── Nav ───────────────────────────────────────────
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  if (btn) btn.classList.add('active');
+  if (id==='tracker') renderTracker();
 }
 
 // ── Init ──────────────────────────────────────────
