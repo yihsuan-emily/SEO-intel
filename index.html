@@ -140,8 +140,6 @@
       </div>
     </div>
   </div>
-  <script src="data.js"></script>
-  <script src="data_en.js"></script>
 </header>
 
 <div class="container">
@@ -457,6 +455,14 @@ function showPage(id, btn) {
 
 // ── Init ──────────────────────────────────────────
 setLang('en');
+</script>
+
+<!-- ⚠️ data files must be loaded AFTER all DOM and logic above -->
+<script src="data.js"></script>
+<script src="data_en.js"></script>
+<script>
+  // Re-render after data files load — ensures INTEL_DATA_EN is available
+  setLang('en');
 </script>
 </body>
 </html>
