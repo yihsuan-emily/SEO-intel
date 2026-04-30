@@ -1,215 +1,250 @@
-// ═══════════════════════════════════════════════
-// 每日更新這個檔案就好，index.html 不需要動
-// 每次 Claude 產出新情報，會給你新版的 data.js
-// ═══════════════════════════════════════════════
-
 const INTEL_DATA = {
-
   meta: {
-    date: "2026.04.26",
-    weekday: "週日",
-    weekday_en: "Sunday",
-    issue: 1,
+    date: "2026.05.01",
+    weekday: "週五",
+    weekday_en: "Friday",
+    issue: 2,
   },
 
   priority: {
     level: "P1",
-    title: "Google March 2026 Core Update 已完成，現在是分析黃金窗口",
-    body: "更新4月8日完成，Google 建議等一週後再分析。現在（4月26日）是最佳分析時機，數據已穩定。"
+    title: "Google AI Mode 全面登陸 Chrome：瀏覽器即搜尋引擎時代正式開啟",
+    body: "2026 年 4 月 16 日，Google 正式宣布將 AI Mode 嵌入 Chrome 瀏覽器（VP of Product Robby Stein 官方部落格確認），用戶點擊 AI Mode 中的連結時，網頁將以「並排視圖」呈現而非取代當前頁面。4 月 29 日更進一步整合至 Android 搜尋列，「Search…」提示詞改為「Ask Google」。Chrome 全球瀏覽器市占超過 60%，此舉大幅壓縮 ChatGPT、Perplexity 等競品的切換動機。⚠️ 目前僅美國用戶可用且仍在分階段推出，全球影響規模尚待觀察。",
   },
 
   cards: [
     {
-      domain: "SEO", category: "strategy", credibility: "official",
-      title: "March 2026 Core Update：AI 生成內容的新標準",
-      body: "更新懲罰「大規模生產、缺乏人工編輯監督」的內容。分析師認為部署了語義過濾機制，能識別 AI 替代人工 vs AI 輔助人工的差異。前十名有90.7%的頁面位置發生變動。\n\n⚠️ 「Gemini 4.0 語義過濾器」是推論，非官方確認。",
-      action: "逐頁自問：「這頁有什麼是前十名沒有的？」沒答案 = 資訊增益問題，不是技術問題",
-      full: false
+      domain: "SEO",
+      category: "measurement",
+      credibility: "research",
+      title: "March 2026 Core Update 數據出爐：79.5% 前三名 URL 大洗牌",
+      body: "SE Ranking 在 4 月 15 日向 Search Engine Land 獨家釋出數據：March 2026 Core Update（3/27–4/8）造成前三名 URL 變動率達 79.5%，遠高於 December 2025 的 66.8%；前十名中有 24.1% 的頁面直接跌出百名之外（December 2025 僅 14.7%）。\n\nAleyda Solis（SEOFOMO）使用 Sistrix 分析 3/26–4/11 的美國市場數據，歸納出一致的趨勢：「目的地品牌」（Destination Sources）明顯得利，包含官方機構、品牌官網、專科媒體；「中介站」（Aggregators、目錄、比較型網站）持續失血。\n\n⚠️ Aleyda Solis 的分析屬獨立研究，電商版塊數據較為混雜，非所有垂直領域呈現相同模式。Google 並未公開具體調整因子。",
+      action: "用 Google Search Console 篩出 4/8 後流量下跌超過 20% 的頁面，與 Sistrix/Semrush 勝出者比對，優先強化「目的地價值」而非表面 SEO 技巧。",
+      full: true,
     },
     {
-      domain: "AEO", category: "execution", credibility: "research",
-      title: "ChatGPT 引用機制解析：88% 引用 URL 來自搜尋結果",
-      body: "Ahrefs 研究：ChatGPT 只在34.5%的查詢中啟用搜尋功能，引用的88%網址直接來自搜尋。品牌透過第三方來源被引用的機率是自有網域的6.5倍（AirOps, 2025年10月）。",
-      action: "在內容第一句給出完整答案；立即加入 FAQ schema；確保 robots.txt 允許 AI 爬蟲",
-      full: false
+      domain: "SEO",
+      category: "measurement",
+      credibility: "research",
+      title: "AI Overview 讓 CTR 再跌：58% → 61%，但被引用者逆勢翻倍",
+      body: "Ahrefs 在 2026 年 2 月更新研究（基於 Dec 2025 數據、30 萬關鍵字）：有 AI Overview 的查詢，第一名 CTR 已從 Apr 2025 的 34.5% 降幅擴大至 58%。Search Engine Journal 最新報導（Apr 2026）引述 Seer Interactive 最新數據，降幅甚至達 61%。\n\n然而反向訊號同樣存在：被 AI Overview 引用的品牌頁面，每次曝光獲得的點擊量比「未被引用但同 SERP」的頁面高出約 120%。非 AI Overview 查詢的 CTR 則從 2025 年 1 月的 2.8% 緩升至 2026 年 2 月的 3.8%，顯示市場正在分化。\n\n⚠️ 120% 數字來自 Seer Interactive 針對特定客戶數據集，並非大規模跨行業樣本，需審慎轉用。",
+      action: "以 GSC 找出有 AI Overview 的高印象數查詢，分析自家頁面是否被引用；引用者優先維護內容新鮮度，未引用者檢查 answer-first 結構與 Schema 標記。",
+      full: false,
     },
     {
-      domain: "GEO", category: "market", credibility: "research",
-      title: "AI 搜尋市場份額：Gemini 快速追趕 ChatGPT",
-      body: "Similarweb（2026年2月）：ChatGPT 從75.7%跌至61.7%；Gemini 從5.7%急升至24.4%；Claude 從1.7%升至3.3%；Grok 3.4%。GEO 優化目標平台的優先順序正在改變。",
-      action: "GEO 策略不能只針對 ChatGPT，Gemini 的優化邏輯需要同步布局",
-      full: false
+      domain: "GEO",
+      category: "strategy",
+      credibility: "research",
+      title: "YouTube 超越 Reddit 成為 LLM 第一引用來源，LinkedIn 文章爆發",
+      body: "GEORaiser 整合 Q1 2026 跨平台 LLM 回答分析：YouTube 已超越 Reddit，成為 LLM 引用頻率最高的單一網域，約佔 AI 生成回答的 16%，Reddit 降至約 10%。原因被歸因於影片內容帶有的真人示範、聲音專業度等難以偽造的真實性訊號。\n\nLinkedIn 文章（非貼文）是本期最大黑馬：LinkedIn 在 ChatGPT 引用排名中從第 11 名躍升至第 5 名（2025 年 11 月→2026 年 2 月），且 LinkedIn 文章佔 LinkedIn 所有 AI 引用的 50–66%。B2B 品牌現在最高效的 GEO 單一渠道可能正是 LinkedIn 長文。\n\nChatGPT 與 Perplexity 的引用網域重疊率僅 11%，代表針對單一平台優化的 GEO 策略很可能在另一平台無效。⚠️ GEORaiser 為商業分析機構，數據方法未完全公開。",
+      action: "GEO 平台布局優先順序更新：YouTube（產品示範影片）> LinkedIn 長文（B2B）> Reddit 社群參與（Perplexity / Google AI Overview）。三者皆需而非擇一。",
+      full: false,
     },
     {
-      domain: "GEO", category: "strategy", credibility: "opinion",
-      title: "Google 內部搶 GEO：GEO Partner Manager 職缺曝光",
-      body: "Google 在大客戶銷售團隊新設 GEO Partner Manager，職責包括「影響合作夥伴將 Google 旗下平台優先納入工具和方法論」。業界解讀：Google 正將 GEO 視為 PR/影響力層面的競爭。\n\n⚠️ Google 未公開說明此職缺背後意圖，以上為業界詮釋。",
-      action: "追蹤此職缺後續發展；理解 Google 可能主動塑造 GEO 生態系統的動機",
-      full: false
+      domain: "GEO",
+      category: "execution",
+      credibility: "opinion",
+      title: "llms.txt：實際效益仍有爭議，但 Anthropic 已官方採用",
+      body: "llms.txt 標準的現況呈現明顯分歧：Mintlify 公司記錄到 Anthropic 曾親自要求其為文件站實作 llms.txt 及 llms-full.txt，Profound 的追蹤數據亦顯示 Microsoft、OpenAI 等廠商的爬蟲確實有存取 llms-full.txt。Vercel 更報告透過 GEO（非 SEO）努力，10% 的新用戶註冊來自 ChatGPT。\n\n然而 AEO Engine 對 500 個網站的研究得出相反結論：主流 AI 平台基本上忽略 llms.txt 指令，採用率「仍為零」。iSimplifyMe（Apr 2026）的分析也指出，截至 2026 年 4 月沒有任何主要 AI 平台正式承諾將其作為一等輸入。\n\n業界共識傾向於「現在建立可前向相容，但不要預期立即回報」。⚠️ 相互矛盾的研究尚未有中立第三方仲裁，兩方皆有利益衝突嫌疑。",
+      action: "低成本執行：用 Markdown 格式建立 llms.txt，指向最具引用價值的頁面（原始研究、方法論、詞彙表）。成本極低，潛在前向相容性值得投入。",
+      full: false,
     },
     {
-      domain: "GEO", category: "measurement", credibility: "research",
-      title: "GEO 工具市場成熟化：免費到企業級工具全覽",
-      body: "2026年4月 GEO 工具市場：Profound（企業版，$499/月）、Adobe LLM Optimizer、Semrush AI Visibility Toolkit、Scrunch（中市場，$250/月）。HubSpot AEO Grader 仍免費。Reddit、LinkedIn、YouTube 是主要 LLM 最常引用的平台。",
-      action: "先用 HubSpot AEO Grader 做免費基線評估；有預算再考慮 Scrunch 或 Semrush 附加模組",
-      full: true
-    }
+      domain: "AEO",
+      category: "market",
+      credibility: "research",
+      title: "eMarketer：美國企業 GEO 預算佔數位行銷 12%，94% 計畫增加",
+      body: "eMarketer 數據顯示，美國企業在 2025 年平均將數位行銷預算的 12% 用於 GEO（Generative Engine Optimization），且 94% 的受訪企業計畫在 2026 年繼續增加這一比例。Search Engine Land 的行業調查（2026 年初）則顯示 84% 的行銷人員認可「GEO」為該領域的標準術語，「AEO」為第二常用同義詞。\n\n工具面：Semrush 等主流工具已開始在傳統 SERP 排名報告旁提供 LLM 引用追蹤，企業端通常每週對 50–200 個優先查詢在 4–6 個 AI 平台進行監測，並同步追蹤競爭對手提及率。\n\n⚠️ 12% 預算比例來自 eMarketer 的抽樣調查，不同規模與行業的企業差異可能顯著。",
+      action: "若尚未建立 AI 引用追蹤基礎設施，本月啟動：在 ChatGPT、Perplexity、Gemini、Claude 手動測試 10–20 個核心品牌查詢，記錄被引用率與引用來源，作為 Q2 基準數據。",
+      full: false,
+    },
+    {
+      domain: "SEO",
+      category: "execution",
+      credibility: "official",
+      title: "Google AI Mode Chrome 整合：GEO 意涵超越 UI 更新",
+      body: "Google 於 4 月 16 日（VP Robby Stein 官方部落格）正式發布 AI Mode 嵌入 Chrome，4 月 29 日（9to5Google）延伸至 Android 搜尋列。核心功能：點擊連結後網頁與 AI Mode 並排呈現，用戶可同時查看原始頁面並對 AI 追問；支援跨 Tab、圖片、PDF 的多輸入查詢。\n\nLumar 的 April 2026 SEO/GEO 月報指出，AI Mode 還獲得了「代理撥打電話」功能（詢問商品庫存）以及全美用戶的行程規劃 Canvas 工具，標誌著 Google Search 正從「資訊引擎」轉型為「任務引擎」。\n\n對 GEO/AEO 的實際影響：若用戶不再需要離開 Google 生態圈完成任務，品牌被 AI Mode 引用（而非僅排名）的重要性將進一步提升。",
+      action: "測試自家品牌在 AI Mode 中的引用與呈現方式（目前限美國）；確認關鍵頁面使用 Server-Side Rendering，使 ClaudeBot 與 GPTBot 等 AI 爬蟲可讀取完整 HTML 內容。",
+      full: false,
+    },
   ],
 
   actions: [
-    { priority: "high", label: "立即", text: "用 Google Search Console 比對 3月27日前後的流量變化，找出受 Core Update 影響的頁面", tag: "SEO · 衡量" },
-    { priority: "high", label: "本週", text: "為最重要的5頁內容加入 FAQ schema 標記", tag: "AEO · 執行" },
-    { priority: "mid",  label: "本月", text: "用 HubSpot AEO Grader 跑一次基線評估，記錄目前在 AI 搜尋的能見度", tag: "GEO · 衡量" },
-    { priority: "mid",  label: "本月", text: "確認 robots.txt 允許主要 AI 爬蟲（GPTBot, Google-Extended, PerplexityBot）", tag: "AEO · 執行" },
-    { priority: "low",  label: "長期", text: "在 Reddit、LinkedIn 建立品牌存在感，增加第三方引用密度", tag: "GEO · 策略" }
+    {
+      priority: "high",
+      label: "立即",
+      text: "Google Search Console 篩出 4/8 後流量下跌 ≥20% 的頁面，對照 Aleyda Solis 勝出者模式，確認是否屬於「中介站」類型內容。",
+      tag: "SEO · 衡量",
+    },
+    {
+      priority: "high",
+      label: "本週",
+      text: "在 ChatGPT、Perplexity、Gemini 手動測試 10–20 個核心品牌查詢，記錄引用率與引用來源，建立 Q2 GEO 基準。",
+      tag: "GEO · 衡量",
+    },
+    {
+      priority: "mid",
+      label: "本月",
+      text: "發布至少一篇 LinkedIn 長文（非短貼文），內容針對行業核心問題提供原創觀點；同步評估是否建立品牌 YouTube 頻道做產品示範或教學影片。",
+      tag: "GEO · 執行",
+    },
+    {
+      priority: "mid",
+      label: "本月",
+      text: "建立或更新 llms.txt 檔案，指向最具引用價值的原始研究、方法論說明與詞彙表頁面；確認這些頁面使用 SSR 且核心內容在 HTML 中可見。",
+      tag: "AEO · 技術",
+    },
+    {
+      priority: "low",
+      label: "Q2",
+      text: "規劃「目的地品牌」轉型評估：盤點哪些頁面屬於中介/彙整性質，設計重建為第一手資料或原創研究內容的路線圖。",
+      tag: "SEO · 策略",
+    },
   ],
 
   tracker: {
     AEO: [
       {
-        cat:"On-page", item:"Extractability",
-        note:"開頭一句給完整答案；每段可獨立成立",
-        update:"Answer-first 內容與較高 AI 引用率相關（Ahrefs, 2026）",
-        trend:"up", cred:"research",
-        ref:"https://ahrefs.com/blog/the-great-decoupling/"
+        cat: "On-page",
+        item: "Answer-first Structure",
+        note: "頁面首段直接給出答案，後段補充佐證與細節",
+        update: "AI Overview 引用頁面的每印象點擊率比未引用頁面高 120%（Seer Interactive, Apr 2026），強化 answer-first 設計的商業動機更明確",
+        trend: "up",
+        cred: "research",
+        ref: "https://www.searchenginejournal.com/ai-overview-ctr-fell-61-but-clicks-didnt-collapse/572993/",
       },
       {
-        cat:"On-page", item:"Schema Markup",
-        note:"FAQ / How-to / Article schema",
-        update:"FAQ schema 使 OtterlyAI 自身網站 AI 引用增加 350%（OtterlyAI, 2026）",
-        trend:"up", cred:"research",
-        ref:"https://otterly.ai/blog/how-to-optimize-content-for-ai-search/"
+        cat: "On-page",
+        item: "Schema Markup",
+        note: "sameAs / about / mentions 標記建立品牌實體跨平台一致性",
+        update: "GEO 實踐中 Schema 的重要性從「SEO 排名信號」升格為「LLM 實體辨識基礎」，Quattr 記錄優化 33 頁後 AI 引用率提升 33%",
+        trend: "up",
+        cred: "opinion",
+        ref: "https://www.quattr.com/blog/how-to-get-cited-by-llms",
       },
       {
-        cat:"On-page", item:"Relevance",
-        note:"語義豐富、涵蓋完整意圖",
-        update:"Google 排名系統評估主題相關性與意圖，而非關鍵字匹配（Google Search Central）",
-        trend:"up", cred:"official",
-        ref:"https://developers.google.com/search/blog"
+        cat: "Technical",
+        item: "llms.txt",
+        note: "在網站根目錄放置 Markdown 格式的 AI 內容導引檔案",
+        update: "🆕 爭議浮現：Mintlify/Profound 數據顯示主流 LLM 爬蟲確實存取；AEO Engine 500 站研究稱 AI 平台幾乎忽略。業界建議「低成本建立，勿過度期待」",
+        trend: "stable",
+        cred: "opinion",
+        ref: "https://isimplifyme.com/blog/llms-txt",
       },
       {
-        cat:"On-page", item:"Content Format (HTML) 🆕",
-        note:"HTML 與 Markdown 對 AI 爬蟲流量無顯著統計差異（RCT, 2026年2月）",
-        update:"Profound 對381頁進行隨機對照實驗，中位數差異僅多1次爬取，統計上不顯著",
-        trend:"stable", cred:"research",
-        ref:"https://www.tryprofound.com/blog/does-markdown-increase-ai-bot-traffic"
+        cat: "Technical",
+        item: "Robots.txt / AI 爬蟲管理",
+        note: "針對 GPTBot、ClaudeBot、PerplexityBot、Google-Extended 設定爬取權限",
+        update: "GPTBot + ClaudeBot 單月請求量已達 Googlebot 的約 20%（2024 Q4 數據），AI 爬蟲流量不可忽視",
+        trend: "up",
+        cred: "research",
+        ref: "https://higoodie.com/blog/llms-txt-robots-txt-ai-optimization/",
       },
       {
-        cat:"Off-page", item:"Citation Density",
-        note:"品牌透過第三方來源被引用的機率是自有網域的6.5倍（跨 AI 搜尋平台，AirOps, 2025年10月）⚠️ 轉引數據",
-        update:"第三方引用：自有內容以外的數位公關、媒體露出是核心槓桿",
-        trend:"up", cred:"research",
-        ref:"https://www.airops.com/blog/answer-engine-optimization-tools"
-      },
-      {
-        cat:"Off-page", item:"Platform Presence",
-        note:"LinkedIn 領跑專業查詢；YouTube 領跑 AI Overviews；Reddit 領跑 ChatGPT 引用",
-        update:"各平台引用來源有差異，非統一排名（Ahrefs / Profound, 2026）",
-        trend:"up", cred:"research",
-        ref:"https://ahrefs.com/blog/most-cited-domains-in-chatgpt/"
-      },
-      {
-        cat:"Authority", item:"E-E-A-T",
-        note:"作者資歷、第一手經驗、可引用的觀點",
-        update:"March 2026 Core Update 後，業界分析認為缺乏人工監督的 AI 內容排名下滑（業界觀點）",
-        trend:"up", cred:"opinion",
-        ref:"https://www.seroundtable.com/google-march-2026-core-update-complete-41145.html"
-      },
-      {
-        cat:"Authority", item:"Domain Authority",
-        note:"傳統 DA 對 AI 引用影響有限",
-        update:"AI Overview 引用不要求前十名排名，內容相關性與結構獨立發揮作用（Ahrefs, 2026）",
-        trend:"down", cred:"research",
-        ref:"https://ahrefs.com/blog/ai-overview-citations-top-10/"
-      },
-      {
-        cat:"Technical", item:"Robots.txt",
-        note:"明確允許 GPTBot / Google-Extended / ClaudeBot / PerplexityBot",
-        update:"基礎配置，應立即確認（Google Search Central）",
-        trend:"stable", cred:"official",
-        ref:"https://developers.google.com/search/docs/crawling-indexing/overview"
-      },
-      {
-        cat:"Technical", item:"llms.txt",
-        note:"新興格式，類似 robots.txt for LLMs",
-        update:"OtterlyAI 90天實驗：僅0.1% AI 爬蟲流量觸及 llms.txt，對 AI 引用無顯著影響",
-        trend:"stable", cred:"unverified",
-        ref:"https://otterly.ai/blog/the-llms-txt-experiment/"
+        cat: "Authority",
+        item: "E-E-A-T",
+        note: "Experience / Expertise / Authoritativeness / Trustworthiness 綜合信號",
+        update: "March 2026 Core Update 後，臨床、研究導向的專科來源在健康類明顯得利，E-E-A-T 信號在演算法中的權重進一步提升（Aleyda Solis 分析）",
+        trend: "up",
+        cred: "research",
+        ref: "https://www.aleydasolis.com/en/search-engine-optimization/google-march-core-update-2026/",
       },
     ],
+
     GEO: [
       {
-        cat:"平台布局", item:"ChatGPT",
-        note:"約34.5% 查詢啟用即時搜尋，其餘依賴訓練資料",
-        update:"市場份額跌至61.7%（Similarweb, 2026年2月）⚠️ 原始報告需付費存取",
-        trend:"down", cred:"research",
-        ref:""
+        cat: "平台布局",
+        item: "YouTube",
+        note: "產品示範、教學影片，真人出鏡提供難以偽造的真實性訊號",
+        update: "🆕 Q1 2026：YouTube 超越 Reddit 成為 LLM 第一引用來源，約佔 AI 回答的 16%（GEORaiser 跨平台分析）",
+        trend: "up",
+        cred: "opinion",
+        ref: "https://georaiser.com/blog/youtube-overtakes-reddit-ai-citations",
       },
       {
-        cat:"平台布局", item:"Gemini",
-        note:"Google AI Overviews 優化邏輯近似傳統 SEO",
-        update:"市場份額急升至24.4%（Similarweb, 2026年2月）⚠️ 原始報告需付費存取",
-        trend:"up", cred:"research",
-        ref:""
+        cat: "平台布局",
+        item: "LinkedIn（長文）",
+        note: "LinkedIn 文章（非短貼文）對 B2B 品牌的 AI 引用效果顯著高於一般貼文",
+        update: "🆕 LinkedIn 在 ChatGPT 引用排名中 3 個月內從第 11 名升至第 5 名；LinkedIn 文章佔 LinkedIn 所有 AI 引用的 50–66%",
+        trend: "up",
+        cred: "opinion",
+        ref: "https://georaiser.com/blog/youtube-overtakes-reddit-ai-citations",
       },
       {
-        cat:"平台布局", item:"Perplexity",
-        note:"原始資料引用比例高；每則回應平均8.79個引用",
-        update:"份額穩定 ~1.8%；citations-first 設計使其最接近傳統 SEO 排名邏輯",
-        trend:"stable", cred:"research",
-        ref:"https://ahrefs.com/blog/ai-search-overlap/"
+        cat: "平台布局",
+        item: "Reddit",
+        note: "真實社群討論，Perplexity 與 Google AI Overview 引用價值仍高；ChatGPT 引用率下降",
+        update: "Reddit 在 ChatGPT 的影響力因 Google API 節流（2026 年 2 月）而下降，但對 Perplexity 與 Google AI Overview 仍為高價值引用來源",
+        trend: "stable",
+        cred: "opinion",
+        ref: "https://georaiser.com/blog/youtube-overtakes-reddit-ai-citations",
       },
       {
-        cat:"量測", item:"Brand Mention Rate",
-        note:"追蹤品牌在 AI 回應中的出現頻率",
-        update:"HubSpot AEO Grader 提供免費基線測試",
-        trend:"up", cred:"opinion",
-        ref:"https://www.hubspot.com/ai-search-grader"
+        cat: "平台布局",
+        item: "Google AI Mode",
+        note: "Google 的對話式 AI 搜尋體驗，已嵌入 Chrome 與 Android",
+        update: "🆕 4/16 官方發布 Chrome 並排視圖；4/29 整合 Android 搜尋列；代理電話查庫存、Canvas 行程規劃工具全面上線（美國）",
+        trend: "up",
+        cred: "official",
+        ref: "https://techcrunch.com/2026/04/16/google-now-lets-you-explore-the-web-side-by-side-with-ai-mode/",
       },
       {
-        cat:"量測", item:"Citation Stability 🆕",
-        note:"40-60% 引用來源每月更換",
-        update:"⚠️ 原始來源未驗證（轉引自彙整頁，聲稱來自 eMarketer）；GEO 能見度遠不如 SEO 穩定為業界共識",
-        trend:"stable", cred:"unverified",
-        ref:""
+        cat: "內容策略",
+        item: "Content Freshness",
+        note: "30 天內更新的內容獲得 AI 引用的機率顯著高於舊內容",
+        update: "跨平台引用數據顯示，30 天內更新的內容 AI 引用率是較舊內容的 3.2 倍（GEORaiser 整合分析）⚠️ 方法未完全公開",
+        trend: "up",
+        cred: "opinion",
+        ref: "https://georaiser.com/blog/youtube-overtakes-reddit-ai-citations",
       },
       {
-        cat:"內容策略", item:"Information Gain",
-        note:"提供他人沒有的觀點、數據、第一手經驗",
-        update:"Google Helpful Content 系統明確強調資訊增益；AI 引用偏好原創資料",
-        trend:"up", cred:"official",
-        ref:"https://developers.google.com/search/docs/appearance/helpful-content-system"
+        cat: "量測",
+        item: "AI Traffic Share / Brand Mention Rate",
+        note: "追蹤品牌在各 AI 平台回答中的提及率與引用頻率",
+        update: "eMarketer：美國企業 GEO 預算佔數位行銷 12%（2025），94% 計畫 2026 年增加；企業端通常每週追蹤 50–200 個查詢跨 4–6 個平台",
+        trend: "up",
+        cred: "research",
+        ref: "https://www.cmswire.com/digital-marketing/reddits-rise-in-ai-citations-what-marketers-must-know-about-aeo-strategy/",
       },
     ],
+
     SEO: [
       {
-        cat:"演算法", item:"Core Update 節奏",
-        note:"2026 Q1 出現三個更新（Spam Update + Core Update）",
-        update:"March Core Update 4月8日完成（Google Search Status Dashboard 官方確認）",
-        trend:"stable", cred:"official",
-        ref:"https://developers.google.com/search/blog"
+        cat: "演算法",
+        item: "Core Updates",
+        note: "每季 1–2 次大型排名重評，著重整體網站品質訊號",
+        update: "March 2026 Core Update（3/27–4/8）完成：前三名 URL 變動率 79.5%（SE Ranking）；Aleyda Solis Sistrix 分析確認「目的地品牌」得利、「中介站」失血模式",
+        trend: "stable",
+        cred: "research",
+        ref: "https://searchengineland.com/march-2026-google-core-update-what-changed-474397",
       },
       {
-        cat:"排名信號", item:"Helpful Content",
-        note:"人工監督 + AI 輔助 > AI 獨立生產",
-        update:"Core Update 後業界觀察：AI 替代人工的內容排名下滑（業界觀點，非 Google 官方措辭）",
-        trend:"up", cred:"opinion",
-        ref:"https://developers.google.com/search/docs/appearance/helpful-content-system"
+        cat: "演算法",
+        item: "Spam Updates",
+        note: "針對連結操控、規模化低品質內容的獨立更新",
+        update: "March 2026 Spam Update（3/24–3/25）在不到一天完成，Google 稱為常規更新；與 Core Update 時序重疊造成歸因困難（SE Ranking 分析）",
+        trend: "stable",
+        cred: "official",
+        ref: "https://searchengineland.com/library/platforms/google/google-algorithm-updates",
       },
       {
-        cat:"排名信號", item:"Page-level Authority",
-        note:"弱內容即使在強網域也可能被懲罰",
-        update:"⚠️ 未驗證推論：分析師觀察，非 Google 官方確認的機制",
-        trend:"up", cred:"unverified",
-        ref:"https://www.seroundtable.com/google-march-2026-core-update-complete-41145.html"
+        cat: "流量",
+        item: "AI Overview CTR 影響",
+        note: "有 AI Overview 的查詢，傳統有機結果點擊率顯著下降",
+        update: "Ahrefs（Feb 2026，基於 Dec 2025 數據）：降幅從 34.5% 擴大至 58%。SEJ 引用 Seer Interactive（Apr 2026）：最新數字達 61%。⚠️ 各研究樣本與方法不同，數字不可直接比較",
+        trend: "down",
+        cred: "research",
+        ref: "https://ahrefs.com/blog/ai-overviews-reduce-clicks-update/",
       },
       {
-        cat:"流量", item:"AI Overview CTR 影響",
-        note:"AI Overviews 出現時，第一名有機排名 CTR 下降 58%",
-        update:"Ahrefs 分析（2024年底數據，比前一年34.5%的下降幅度更嚴重）",
-        trend:"down", cred:"research",
-        ref:"https://ahrefs.com/blog/the-great-decoupling/"
+        cat: "排名信號",
+        item: "Page-level Authority / 目的地品牌",
+        note: "品牌官網、官方機構、專科媒體的「目的地價值」成為核心排名差異因子",
+        update: "🆕 March 2026 Core Update 後，Google 明確偏好「用戶最自然預期造訪的來源」；中介/彙整類頁面在多個垂直市場同步失血（Aleyda Solis, Sistrix）",
+        trend: "up",
+        cred: "research",
+        ref: "https://www.aleydasolis.com/en/search-engine-optimization/google-march-core-update-2026/",
       },
-    ]
-  }
+    ],
+  },
 };
