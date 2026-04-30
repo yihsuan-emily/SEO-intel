@@ -2,10 +2,12 @@ name: Daily SEO Intel Update
 
 on:
   schedule:
-    # 每天台北時間早上 9:00 執行（UTC+8，所以 UTC 01:00）
     - cron: '0 1 * * *'
   workflow_dispatch:
-    # 也可以在 GitHub Actions 頁面手動觸發
+
+permissions:
+  issues: write
+  contents: read
 
 jobs:
   generate-intel:
@@ -21,7 +23,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests python-dateutil
+        run: pip install requests
 
       - name: Run intel script
         env:
@@ -34,3 +36,4 @@ jobs:
           title: ${{ env.ISSUE_TITLE }}
           content-filepath: ./issue_body.md
           labels: daily-intel
+          token: ${{ secrets.GITHUB_TOKEN }}
