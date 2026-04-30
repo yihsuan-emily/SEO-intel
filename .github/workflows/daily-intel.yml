@@ -1,0 +1,36 @@
+name: Daily SEO Intel Update
+
+on:
+  schedule:
+    # 每天台北時間早上 9:00 執行（UTC+8，所以 UTC 01:00）
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+    # 也可以在 GitHub Actions 頁面手動觸發
+
+jobs:
+  generate-intel:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests python-dateutil
+
+      - name: Run intel script
+        env:
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+        run: python scripts/generate_intel_issue.py
+
+      - name: Create GitHub Issue
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: ${{ env.ISSUE_TITLE }}
+          content-filepath: ./issue_body.md
+          labels: daily-intel
