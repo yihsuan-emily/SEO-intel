@@ -3,7 +3,7 @@
 // 每次 Claude 產出新情報，會給你新版的 data.js
 // ═══════════════════════════════════════════════
 
-const INTEL_DATA = {
+window.__ARCHIVE_INTEL_DATA = {
 
   meta: {
     date: "2026.04.26",
