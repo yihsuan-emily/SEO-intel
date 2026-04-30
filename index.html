@@ -161,14 +161,12 @@
           <span class="tag tag-geo">GEO</span>
         </div>
 
-        <!-- ── Archive selector ── -->
+        <!-- ── Archive selector（自動從 archive-index.json 載入，不需手動維護）── -->
         <div class="archive-selector">
           <span class="archive-label" data-en="Issue" data-zh="期數">Issue</span>
           <select class="archive-select" id="archive-select" onchange="loadArchive(this.value)">
             <option value="latest">Latest</option>
-            <!-- 每次新增存檔後，在這裡加一行 option，例如：
-            <option value="archive/data_2026.04.30.js">2026.04.30 · #2</option>
-            -->
+            <!-- options 由 JS 自動填入，請勿手動加 -->
           </select>
           <span class="archive-badge" id="archive-badge">ARCHIVE</span>
         </div>
@@ -370,7 +368,7 @@ const i18n = {
 
 // ── State ─────────────────────────────────────────
 let LANG = 'en';
-let ARCHIVE_DATA    = null;  // 存放載入的存檔資料（null = 顯示最新）
+let ARCHIVE_DATA    = null;
 let ARCHIVE_DATA_EN = null;
 
 const catClass    = { strategy:'cat-strategy', execution:'cat-execution', measurement:'cat-measurement', market:'cat-market' };
@@ -382,7 +380,7 @@ const pClass      = { high:'p-high', mid:'p-mid', low:'p-low' };
 
 function getT() { return i18n[LANG]; }
 
-// ── getData: 優先存檔資料，否則用最新 ─────────────
+// ── getData ───────────────────────────────────────
 function getData() {
   if (ARCHIVE_DATA !== null) {
     return (LANG === 'en' && ARCHIVE_DATA_EN !== null) ? ARCHIVE_DATA_EN : ARCHIVE_DATA;
@@ -397,7 +395,6 @@ function loadArchive(value) {
   const loading = document.getElementById('loading-overlay');
 
   if (value === 'latest') {
-    // 回到最新
     ARCHIVE_DATA    = null;
     ARCHIVE_DATA_EN = null;
     badge.classList.remove('visible');
@@ -408,22 +405,20 @@ function loadArchive(value) {
     return;
   }
 
-  // 載入存檔 JS
   loading.classList.add('visible');
   loading.textContent = getT().loading;
 
-  // 移除舊的存檔 script tag（避免重複）
+  // 移除舊的存檔 script tag
   const old = document.getElementById('archive-script');
   if (old) old.remove();
   const oldEn = document.getElementById('archive-script-en');
   if (oldEn) oldEn.remove();
 
-  // 清空存檔變數
   window.__ARCHIVE_INTEL_DATA    = undefined;
   window.__ARCHIVE_INTEL_DATA_EN = undefined;
 
-  // 存檔命名規則：archive/data_YYYY.MM.DD.js → EN 版：archive/data_en_YYYY.MM.DD.js
-  const enValue = value.replace('data_', 'data_en_');
+  // EN 版檔名：archive/data_YYYY.MM.DD.js → archive/data_en_YYYY.MM.DD.js
+  const enValue = value.replace('/data_', '/data_en_');
 
   let zhLoaded = false, enLoaded = false;
 
@@ -447,7 +442,6 @@ function loadArchive(value) {
     if (document.getElementById('page-tracker').classList.contains('active')) renderTracker();
   }
 
-  // 載入 ZH 版
   const scriptZh = document.createElement('script');
   scriptZh.id  = 'archive-script';
   scriptZh.src = value + '?t=' + Date.now();
@@ -455,13 +449,26 @@ function loadArchive(value) {
   scriptZh.onerror = () => { zhLoaded = true; tryDone(); };
   document.head.appendChild(scriptZh);
 
-  // 載入 EN 版
   const scriptEn = document.createElement('script');
   scriptEn.id  = 'archive-script-en';
   scriptEn.src = enValue + '?t=' + Date.now();
   scriptEn.onload  = () => { enLoaded = true; tryDone(); };
   scriptEn.onerror = () => { enLoaded = true; tryDone(); };
   document.head.appendChild(scriptEn);
+}
+
+// ── 填充 archive select（由 archive-index.js 注入 ARCHIVE_INDEX）──
+// ★ 改用 <script src> 載入，完全避開 fetch/CORS 問題 ★
+function populateArchiveSelect() {
+  if (typeof ARCHIVE_INDEX === 'undefined' || !Array.isArray(ARCHIVE_INDEX)) return;
+  const sel = document.getElementById('archive-select');
+  while (sel.options.length > 1) sel.remove(1);
+  ARCHIVE_INDEX.forEach(issue => {
+    const opt = document.createElement('option');
+    opt.value = issue.value;
+    opt.textContent = issue.label;
+    sel.appendChild(opt);
+  });
 }
 
 // ── Language switch ───────────────────────────────
@@ -477,9 +484,7 @@ function setLang(lang) {
   document.querySelectorAll('[data-en]').forEach(el => {
     el.textContent = lang==='en' ? el.dataset.en : el.dataset.zh;
   });
-  // archive selector label
   document.querySelector('.archive-label').textContent = t.archiveLabel;
-  // update Latest option label
   const sel = document.getElementById('archive-select');
   if (sel.options[0]) sel.options[0].text = t.archiveLatest;
 
@@ -589,8 +594,10 @@ setLang('en');
 <!-- ⚠️ data files must be loaded AFTER all DOM and logic above -->
 <script src="data.js"></script>
 <script src="data_en.js"></script>
+<script src="archive-index.js"></script>
 <script>
-  // Re-render after data files load
+  // Re-render after data files load, then populate archive select
+  populateArchiveSelect();
   setLang('en');
 </script>
 </body>
