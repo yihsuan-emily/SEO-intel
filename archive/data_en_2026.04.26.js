@@ -3,7 +3,7 @@
 // Variable name must stay INTEL_DATA_EN
 // ═══════════════════════════════════════════════
 
-const INTEL_DATA_EN = {
+window.__ARCHIVE_INTEL_DATA_EN = {
 
   meta: {
     date: "2026.04.26",
