@@ -1,215 +1,250 @@
-// ═══════════════════════════════════════════════
-// English version — update alongside data.js
-// Variable name must stay INTEL_DATA_EN
-// ═══════════════════════════════════════════════
-
 const INTEL_DATA_EN = {
-
   meta: {
-    date: "2026.04.26",
-    weekday: "Sunday",
-    weekday_en: "Sunday",
-    issue: 1,
+    date: "2026.05.01",
+    weekday: "週五",
+    weekday_en: "Friday",
+    issue: 2,
   },
 
   priority: {
     level: "P1",
-    title: "Back Button Hijacking Policy: 51 Days to Enforcement",
-    body: "Google officially announced a new spam policy on April 13, 2026. Sites that manipulate browser back navigation face manual actions or automated demotions starting June 15. Third-party ad scripts and SPA routers are the most common culprits — site owners are responsible even if the behavior originates from included libraries."
+    title: "Google AI Mode Lands in Chrome: The Browser-as-Search-Engine Era Begins",
+    body: "On April 16, Google officially embedded AI Mode into Chrome (confirmed via VP of Product Robby Stein's official blog). When users click a link inside AI Mode, the webpage now opens in a side-by-side view rather than replacing the current page. On April 29, the integration expanded to the Android search bar, with 'Search…' replaced by 'Ask Google.' With Chrome holding 60%+ global browser market share, this dramatically raises switching costs away from ChatGPT and Perplexity. ⚠️ Currently US-only with staged rollout; global impact scale is yet to be determined.",
   },
 
   cards: [
     {
-      domain: "SEO", category: "strategy", credibility: "official",
-      title: "March 2026 Core Update Completed — YMYL Hit Hardest",
-      body: "Google's March 2026 broad core update rolled out March 27 and completed April 8 (12 days, 4 hours). Over 55% of websites saw noticeable ranking changes. YMYL verticals — health, legal, home services — took the largest hits.\n\n⚠️ Analyst claims about a 'Gemini 4.0 semantic filter' are unverified — not confirmed by Google.",
-      action: "Ask page by page: 'What does this page offer that the top 10 don't?' No answer = an information gain problem, not a technical one.",
-      full: false
+      domain: "SEO",
+      category: "measurement",
+      credibility: "research",
+      title: "March 2026 Core Update Data: 79.5% of Top-3 URLs Reshuffled",
+      body: "SE Ranking shared exclusive data with Search Engine Land on April 15: the March 2026 Core Update (3/27–4/8) caused 79.5% URL churn in top-3 positions, up from 66.8% in December 2025. Among top-10 results, 24.1% of pages dropped out of the top 100 entirely, compared to 14.7% after December 2025.\n\nAleyda Solis (SEOFOMO) analyzed Sistrix US data from 3/26–4/11, finding a consistent directional shift: 'destination sources' gained (official/institutional sites, brand sites, specialist publishers), while 'intermediaries' (aggregators, directories, comparison sites) lost visibility across nearly every measured vertical.\n\n⚠️ Solis's analysis is independent research. The e-commerce pattern was mixed and less clear-cut than other verticals. Google has not publicly disclosed specific ranking factor changes.",
+      action: "Use Google Search Console to identify pages with ≥20% traffic drops after April 8. Compare against Sistrix/Semrush winners and prioritize strengthening 'destination value' over surface-level SEO tactics.",
+      full: true,
     },
     {
-      domain: "AEO", category: "execution", credibility: "research",
-      title: "ChatGPT Citation Mechanics: 88% of Cited URLs Come From Search",
-      body: "Ahrefs research: ChatGPT activates search mode in only 34.5% of queries, and 88% of cited URLs come directly from search results. Brands are 6.5x more likely to be cited via third-party sources than their own domain (AirOps, Oct 2025).",
-      action: "Lead with a complete answer in the first sentence. Add FAQ schema immediately. Confirm robots.txt allows AI crawlers (GPTBot, PerplexityBot, Google-Extended).",
-      full: false
+      domain: "SEO",
+      category: "measurement",
+      credibility: "research",
+      title: "AI Overview CTR Drop Deepens: 58%→61%, But Cited Pages Get 2× More Clicks",
+      body: "Ahrefs updated its study in February 2026 (based on Dec 2025 data, 300K keywords): AI Overview presence now correlates with a 58% lower average CTR for position-1 pages, up from the 34.5% drop measured in April 2025. Search Engine Journal's latest coverage (Apr 2026) citing Seer Interactive puts the figure at 61%.\n\nHowever, a counter-signal exists: pages that are actually cited within AI Overviews receive approximately 120% more clicks per impression than uncited pages on the same SERP. Non-AI Overview queries also show a slight CTR recovery, from 2.8% in Jan 2025 to 3.8% in Feb 2026, suggesting the market is bifurcating.\n\n⚠️ The 120% figure comes from Seer Interactive's client dataset, not a broad industry sample. Cross-industry generalization requires caution.",
+      action: "Use GSC to find high-impression queries triggering AI Overviews. For cited pages, prioritize content freshness. For uncited pages, audit answer-first structure and Schema markup.",
+      full: false,
     },
     {
-      domain: "GEO", category: "market", credibility: "research",
-      title: "AI Search Market Share: Gemini Rapidly Closing the Gap on ChatGPT",
-      body: "Similarweb (Feb 2026): ChatGPT dropped from 75.7% to 61.7%; Gemini surged from 5.7% to 24.4%; Claude rose from 1.7% to 3.3%; Grok at 3.4%. The platform priority order for GEO optimization is actively shifting.",
-      action: "GEO strategy cannot focus on ChatGPT alone — Gemini's optimization logic (closer to traditional SEO) must be addressed in parallel.",
-      full: false
+      domain: "GEO",
+      category: "strategy",
+      credibility: "research",
+      title: "YouTube Overtakes Reddit as #1 LLM Citation Source; LinkedIn Articles Surge",
+      body: "GEORaiser's Q1 2026 cross-platform LLM citation analysis: YouTube has surpassed Reddit as the most-cited single domain in AI responses, appearing in approximately 16% of AI-generated answers. Reddit has fallen to roughly 10%. The shift is attributed to video content's authenticity signals — real-person demonstrations and spoken expertise are harder to fabricate than text comments.\n\nLinkedIn articles (not posts) are the breakout surprise: LinkedIn climbed from rank 11 to rank 5 in ChatGPT citation rankings in just three months (Nov 2025–Feb 2026), and LinkedIn articles account for 50–66% of all LinkedIn AI citations. For B2B brands, long-form LinkedIn articles may now be the single most efficient GEO channel.\n\nChatGPT and Perplexity share only 11% of cited domains, meaning a GEO strategy optimized for one platform may be largely invisible on the other. ⚠️ GEORaiser is a commercial analysis firm; full methodology is not publicly disclosed.",
+      action: "Update GEO platform priority order: YouTube (product demo videos) > LinkedIn long-form articles (B2B) > Reddit community participation (Perplexity / Google AI Overview). All three are needed, not just one.",
+      full: false,
     },
     {
-      domain: "GEO", category: "strategy", credibility: "opinion",
-      title: "Google Enters the GEO Race: New 'GEO Partner Manager' Role Spotted",
-      body: "Google posted a GEO Partner Manager role inside its enterprise sales team, with responsibilities including 'influencing partners to prioritize Google-owned platforms in their tools and methodologies.'\n\n⚠️ Google has not publicly explained the intent behind this role — the above is industry interpretation.",
-      action: "Monitor this role's downstream effects. Understand that Google may actively shape the GEO ecosystem in its favor.",
-      full: false
+      domain: "GEO",
+      category: "execution",
+      credibility: "opinion",
+      title: "llms.txt: Real Benefit Still Debated, But Anthropic Has Officially Adopted It",
+      body: "The current state of llms.txt is sharply divided. On the positive side: Mintlify documented that Anthropic directly requested llms.txt and llms-full.txt implementation for its documentation site. Profound's tracking data shows Microsoft, OpenAI, and others' crawlers are actively accessing llms-full.txt. Vercel reported that 10% of new user sign-ups now come from ChatGPT as a result of GEO efforts.\n\nOn the skeptical side: AEO Engine's research across 500 websites found that major AI platforms 'essentially ignore llms.txt directives,' with zero enforcement adoption. iSimplifyMe's April 2026 analysis confirms no major AI platform has officially committed to reading it as a first-class input as of April 2026.\n\nIndustry consensus tilts toward 'implement now for forward compatibility, but don't expect immediate returns.' ⚠️ Conflicting research lacks neutral third-party arbitration; both sides have potential conflicts of interest.",
+      action: "Low-cost implementation: create a Markdown-formatted llms.txt pointing to your most citation-worthy pages (original research, methodology pages, glossaries). Minimal effort, strong forward-compatibility upside.",
+      full: false,
     },
     {
-      domain: "GEO", category: "measurement", credibility: "research",
-      title: "GEO Tool Market Matures: Free to Enterprise, Full Landscape",
-      body: "April 2026 GEO tool market: Profound (enterprise, $499/mo), Adobe LLM Optimizer, Semrush AI Visibility Toolkit (launched Sept 2025), Scrunch (mid-market, $250/mo). HubSpot AEO Grader remains free. Reddit, LinkedIn, and YouTube are the top three platforms most frequently cited by major LLMs.",
-      action: "Start with HubSpot AEO Grader for a free baseline. Consider Scrunch or Semrush add-on only when you have budget and a clear measurement goal.",
-      full: true
-    }
+      domain: "AEO",
+      category: "market",
+      credibility: "research",
+      title: "eMarketer: US Enterprise GEO Budget Hits 12% of Digital Marketing, 94% Plan to Increase",
+      body: "eMarketer data shows US enterprises allocated an average of 12% of digital marketing budgets to GEO in 2025, with 94% of surveyed companies planning to increase that share in 2026. A Search Engine Land industry survey (early 2026) found that 84% of marketers recognize 'GEO' as the standard term for the discipline, with 'AEO' as the second-most common synonym.\n\nOn the tooling side: Semrush now provides LLM citation tracking alongside traditional SERP ranking reports. Enterprise teams typically monitor 50–200 priority queries across 4–6 AI platforms weekly, with competitive brand mention rate as a primary KPI.\n\n⚠️ The 12% budget figure comes from eMarketer's sample survey; significant variation exists by company size and industry vertical.",
+      action: "If you haven't established AI citation tracking infrastructure, start this month: manually test 10–20 core brand queries in ChatGPT, Perplexity, Gemini, and Claude. Record citation rates and sources as Q2 baseline data.",
+      full: false,
+    },
+    {
+      domain: "SEO",
+      category: "execution",
+      credibility: "official",
+      title: "Google AI Mode Chrome Integration: GEO Implications Go Beyond a UI Update",
+      body: "Google officially launched AI Mode embedded in Chrome on April 16 (VP Robby Stein official blog), then extended it to the Android search bar on April 29 (9to5Google). Core feature: clicking a link opens the webpage side-by-side with AI Mode; users can read the source and ask AI follow-up questions simultaneously. Multi-input queries mixing tabs, images, and PDFs are now supported.\n\nLumar's April 2026 SEO/GEO roundup notes that AI Mode also gained 'agentic calling' (AI phones local stores to check stock availability) and a Canvas trip-planning tool for all US users — signaling Google Search's evolution from 'information engine' to 'task engine.'\n\nThe GEO/AEO implication: if users no longer need to leave the Google ecosystem to complete tasks, being cited within AI Mode (rather than just ranking) becomes structurally more valuable.",
+      action: "Test how your brand appears in AI Mode (currently US-only). Ensure key pages use Server-Side Rendering so AI crawlers like ClaudeBot and GPTBot can read full HTML content without executing JavaScript.",
+      full: false,
+    },
   ],
 
   actions: [
-    { priority: "high", label: "Now",        text: "Use Google Search Console to compare traffic before and after March 27 — identify pages affected by the Core Update.", tag: "SEO · Measurement" },
-    { priority: "high", label: "This Week",  text: "Add FAQ schema markup to your 5 most important content pages.", tag: "AEO · Execution" },
-    { priority: "mid",  label: "This Month", text: "Run a baseline audit with HubSpot AEO Grader — document your current AI search visibility across ChatGPT, Perplexity, and Gemini.", tag: "GEO · Measurement" },
-    { priority: "mid",  label: "This Month", text: "Confirm robots.txt allows major AI crawlers: GPTBot, Google-Extended, PerplexityBot.", tag: "AEO · Execution" },
-    { priority: "low",  label: "Long-term",  text: "Build brand presence on Reddit, LinkedIn, and YouTube to increase third-party citation density across AI platforms.", tag: "GEO · Strategy" }
+    {
+      priority: "high",
+      label: "Now",
+      text: "In Google Search Console, filter for pages with ≥20% traffic drops after April 8. Compare against Aleyda Solis's winner patterns and assess whether they're 'intermediary-type' content.",
+      tag: "SEO · Measurement",
+    },
+    {
+      priority: "high",
+      label: "This Week",
+      text: "Manually test 10–20 core brand queries in ChatGPT, Perplexity, Gemini, and Claude. Record citation rates and sources to establish Q2 GEO baseline data.",
+      tag: "GEO · Measurement",
+    },
+    {
+      priority: "mid",
+      label: "This Month",
+      text: "Publish at least one LinkedIn long-form article (not a short post) addressing a core industry question with original perspective. Also assess whether to launch a brand YouTube channel for product demos or tutorials.",
+      tag: "GEO · Execution",
+    },
+    {
+      priority: "mid",
+      label: "This Month",
+      text: "Create or update a llms.txt file pointing to your most citation-worthy pages (original research, methodology pages, glossaries). Verify these pages use SSR with core content visible in raw HTML.",
+      tag: "AEO · Technical",
+    },
+    {
+      priority: "low",
+      label: "Q2",
+      text: "Plan a 'destination brand' transformation audit: inventory which pages are intermediary/aggregator in nature and design a roadmap to rebuild them as primary sources or original research.",
+      tag: "SEO · Strategy",
+    },
   ],
 
   tracker: {
     AEO: [
       {
-        cat:"On-page", item:"Extractability",
-        note:"Lead with complete answer in first sentence; each paragraph self-contained",
-        update:"Answer-first content correlates with higher AI citation rates (Ahrefs, 2026)",
-        trend:"up", cred:"research",
-        ref:"https://ahrefs.com/blog/the-great-decoupling/"
+        cat: "On-page",
+        item: "Answer-first Structure",
+        note: "Lead with the answer in the opening paragraph; use remaining content to substantiate and expand",
+        update: "AI Overview-cited pages get ~120% more clicks per impression than uncited pages on the same SERP (Seer Interactive, Apr 2026) — stronger commercial motivation for answer-first design",
+        trend: "up",
+        cred: "research",
+        ref: "https://www.searchenginejournal.com/ai-overview-ctr-fell-61-but-clicks-didnt-collapse/572993/",
       },
       {
-        cat:"On-page", item:"Schema Markup",
-        note:"FAQ / How-to / Article schema",
-        update:"FAQ schema produced 350% increase in AI citations in OtterlyAI's own site experiment (OtterlyAI, 2026)",
-        trend:"up", cred:"research",
-        ref:"https://otterly.ai/blog/how-to-optimize-content-for-ai-search/"
+        cat: "On-page",
+        item: "Schema Markup",
+        note: "sameAs / about / mentions properties establish consistent brand entity identity across the web",
+        update: "GEO practice has elevated Schema's role from 'SEO ranking signal' to 'LLM entity recognition foundation.' Quattr documented 33% AI citation improvement after optimizing 33 pages",
+        trend: "up",
+        cred: "opinion",
+        ref: "https://www.quattr.com/blog/how-to-get-cited-by-llms",
       },
       {
-        cat:"On-page", item:"Relevance",
-        note:"Semantic richness; full intent coverage",
-        update:"Google's ranking systems evaluate topical relevance and intent, not keyword matching (Google Search Central)",
-        trend:"up", cred:"official",
-        ref:"https://developers.google.com/search/blog"
+        cat: "Technical",
+        item: "llms.txt",
+        note: "Markdown AI content guide file at website root, directing LLMs to priority content",
+        update: "🆕 Debate has emerged: Mintlify/Profound data shows LLM crawlers do access the file; AEO Engine 500-site study claims AI platforms largely ignore it. Industry leans toward 'low-cost, build for forward compatibility'",
+        trend: "stable",
+        cred: "opinion",
+        ref: "https://isimplifyme.com/blog/llms-txt",
       },
       {
-        cat:"On-page", item:"Content Format (HTML) 🆕",
-        note:"HTML and Markdown show no statistically significant difference in AI bot traffic (RCT, Feb 2026)",
-        update:"Profound A/B tested 381 pages across 6 sites — median difference ~1 extra bot visit, not statistically significant",
-        trend:"stable", cred:"research",
-        ref:"https://www.tryprofound.com/blog/does-markdown-increase-ai-bot-traffic"
+        cat: "Technical",
+        item: "Robots.txt / AI Crawler Management",
+        note: "Setting crawl permissions for GPTBot, ClaudeBot, PerplexityBot, Google-Extended",
+        update: "GPTBot + ClaudeBot combined monthly requests now equal ~20% of Googlebot's volume (Q4 2024 data) — AI crawler traffic is no longer negligible",
+        trend: "up",
+        cred: "research",
+        ref: "https://higoodie.com/blog/llms-txt-robots-txt-ai-optimization/",
       },
       {
-        cat:"Off-page", item:"Citation Density",
-        note:"Brands cited via third-party sources 6.5x more than own domain (across AI search platforms, AirOps Oct 2025) ⚠️ derived figure",
-        update:"Digital PR and editorial mentions are the core lever — owned content alone is insufficient",
-        trend:"up", cred:"research",
-        ref:"https://www.airops.com/blog/answer-engine-optimization-tools"
-      },
-      {
-        cat:"Off-page", item:"Platform Presence",
-        note:"LinkedIn leads professional queries; YouTube leads AI Overviews; Reddit leads ChatGPT citations",
-        update:"Platform citation rankings vary by LLM — not a unified ranking (Ahrefs / Profound, 2026)",
-        trend:"up", cred:"research",
-        ref:"https://ahrefs.com/blog/most-cited-domains-in-chatgpt/"
-      },
-      {
-        cat:"Authority", item:"E-E-A-T",
-        note:"Author credentials, first-hand experience, citable perspective",
-        update:"Post March 2026 Core Update: industry analysis suggests AI-only content without human oversight lost rankings (industry observation, not official Google statement)",
-        trend:"up", cred:"opinion",
-        ref:"https://www.seroundtable.com/google-march-2026-core-update-complete-41145.html"
-      },
-      {
-        cat:"Authority", item:"Domain Authority",
-        note:"Traditional DA has limited impact on AI citation selection",
-        update:"AI Overview citations don't require top-10 rankings — content relevance and structure matter independently (Ahrefs, 2026)",
-        trend:"down", cred:"research",
-        ref:"https://ahrefs.com/blog/ai-overview-citations-top-10/"
-      },
-      {
-        cat:"Technical", item:"Robots.txt",
-        note:"Explicitly allow GPTBot / Google-Extended / ClaudeBot / PerplexityBot",
-        update:"Baseline config — verify immediately (Google Search Central)",
-        trend:"stable", cred:"official",
-        ref:"https://developers.google.com/search/docs/crawling-indexing/overview"
-      },
-      {
-        cat:"Technical", item:"llms.txt",
-        note:"Emerging format, similar to robots.txt but for LLMs",
-        update:"OtterlyAI 90-day experiment: only 0.1% of AI bot traffic reached llms.txt — no measurable citation impact",
-        trend:"stable", cred:"unverified",
-        ref:"https://otterly.ai/blog/the-llms-txt-experiment/"
+        cat: "Authority",
+        item: "E-E-A-T",
+        note: "Experience / Expertise / Authoritativeness / Trustworthiness composite signals",
+        update: "Post-March 2026 Core Update: clinical and research-driven specialist sources gained strongly in health verticals. E-E-A-T signals appear to carry greater algorithmic weight (Aleyda Solis / Sistrix analysis)",
+        trend: "up",
+        cred: "research",
+        ref: "https://www.aleydasolis.com/en/search-engine-optimization/google-march-core-update-2026/",
       },
     ],
+
     GEO: [
       {
-        cat:"Platform", item:"ChatGPT",
-        note:"~34.5% of queries activate live search; remainder relies on training data",
-        update:"Market share fell to 61.7% (Similarweb, Feb 2026) ⚠️ original report requires paid access",
-        trend:"down", cred:"research",
-        ref:""
+        cat: "Platform Presence",
+        item: "YouTube",
+        note: "Product demos and tutorials with real on-camera presence provide authenticity signals that are hard to fabricate",
+        update: "🆕 Q1 2026: YouTube surpassed Reddit as #1 LLM citation domain, appearing in ~16% of AI-generated answers (GEORaiser cross-platform analysis)",
+        trend: "up",
+        cred: "opinion",
+        ref: "https://georaiser.com/blog/youtube-overtakes-reddit-ai-citations",
       },
       {
-        cat:"Platform", item:"Gemini",
-        note:"Google AI Overviews optimization logic mirrors traditional SEO",
-        update:"Market share surged to 24.4% (Similarweb, Feb 2026) ⚠️ original report requires paid access",
-        trend:"up", cred:"research",
-        ref:""
+        cat: "Platform Presence",
+        item: "LinkedIn (Long-form Articles)",
+        note: "LinkedIn articles (not short posts) deliver significantly stronger AI citation impact for B2B brands",
+        update: "🆕 LinkedIn rose from rank 11 to rank 5 in ChatGPT citation rankings in 3 months; LinkedIn articles account for 50–66% of all LinkedIn AI citations",
+        trend: "up",
+        cred: "opinion",
+        ref: "https://georaiser.com/blog/youtube-overtakes-reddit-ai-citations",
       },
       {
-        cat:"Platform", item:"Perplexity",
-        note:"High raw-source citation ratio; avg 8.79 citations per response",
-        update:"Share stable ~1.8%; citations-first design makes it closest to traditional SEO ranking logic",
-        trend:"stable", cred:"research",
-        ref:"https://ahrefs.com/blog/ai-search-overlap/"
+        cat: "Platform Presence",
+        item: "Reddit",
+        note: "Authentic community discussion; still high-value for Perplexity and Google AI Overview; ChatGPT citation rate declining",
+        update: "Reddit's influence on ChatGPT dropped significantly due to Google API throttling (Feb 2026), but remains high-value for Perplexity and Google AI Overview citation strategies",
+        trend: "stable",
+        cred: "opinion",
+        ref: "https://georaiser.com/blog/youtube-overtakes-reddit-ai-citations",
       },
       {
-        cat:"Measure", item:"Brand Mention Rate",
-        note:"Track brand appearance frequency in AI responses",
-        update:"HubSpot AEO Grader — free baseline test across ChatGPT, Perplexity, Gemini",
-        trend:"up", cred:"opinion",
-        ref:"https://www.hubspot.com/ai-search-grader"
+        cat: "Platform Presence",
+        item: "Google AI Mode",
+        note: "Google's conversational AI search experience, now embedded in Chrome and Android",
+        update: "🆕 April 16: official Chrome side-by-side view launch; April 29: Android search bar integration; agentic calling and Canvas trip-planning live for all US users",
+        trend: "up",
+        cred: "official",
+        ref: "https://techcrunch.com/2026/04/16/google-now-lets-you-explore-the-web-side-by-side-with-ai-mode/",
       },
       {
-        cat:"Measure", item:"Citation Stability 🆕",
-        note:"40–60% of citation sources change monthly",
-        update:"⚠️ Unverified: figure appears in aggregator pages attributed to eMarketer — original report not directly confirmed; directional consensus is that GEO visibility is far less stable than SEO",
-        trend:"stable", cred:"unverified",
-        ref:""
+        cat: "Content Strategy",
+        item: "Content Freshness",
+        note: "Content updated within 30 days receives significantly more AI citations than older content",
+        update: "Cross-platform citation data shows content updated within 30 days receives 3.2× more AI citations than older content (GEORaiser aggregated analysis) ⚠️ Full methodology not disclosed",
+        trend: "up",
+        cred: "opinion",
+        ref: "https://georaiser.com/blog/youtube-overtakes-reddit-ai-citations",
       },
       {
-        cat:"Content", item:"Information Gain",
-        note:"Provide perspectives, data, and first-hand experience unavailable elsewhere",
-        update:"Google Helpful Content system explicitly rewards information gain; AI citations favor original data",
-        trend:"up", cred:"official",
-        ref:"https://developers.google.com/search/docs/appearance/helpful-content-system"
+        cat: "Measurement",
+        item: "AI Traffic Share / Brand Mention Rate",
+        note: "Track brand citation frequency and mention rates across AI platforms",
+        update: "eMarketer: US enterprises allocated 12% of digital marketing budgets to GEO in 2025; 94% plan to increase in 2026. Enterprise teams typically track 50–200 queries across 4–6 AI platforms weekly",
+        trend: "up",
+        cred: "research",
+        ref: "https://www.cmswire.com/digital-marketing/reddits-rise-in-ai-citations-what-marketers-must-know-about-aeo-strategy/",
       },
     ],
+
     SEO: [
       {
-        cat:"Algorithm", item:"Core Update Cadence",
-        note:"3 updates in Q1 2026 (Spam Update + Core Update)",
-        update:"March Core Update completed April 8 (confirmed via Google Search Status Dashboard)",
-        trend:"stable", cred:"official",
-        ref:"https://developers.google.com/search/blog"
+        cat: "Algorithm",
+        item: "Core Updates",
+        note: "Major broad ranking re-evaluations, 1–2 per quarter, focused on site-wide quality signals",
+        update: "March 2026 Core Update (3/27–4/8) complete: 79.5% top-3 URL churn (SE Ranking); Aleyda Solis Sistrix analysis confirms 'destination source' gains and 'intermediary' losses pattern",
+        trend: "stable",
+        cred: "research",
+        ref: "https://searchengineland.com/march-2026-google-core-update-what-changed-474397",
       },
       {
-        cat:"Ranking", item:"Helpful Content",
-        note:"Human-supervised + AI-assisted > AI-only production",
-        update:"Post-update industry observation: AI-only content lost rankings (industry observation, not Google's official framing)",
-        trend:"up", cred:"opinion",
-        ref:"https://developers.google.com/search/docs/appearance/helpful-content-system"
+        cat: "Algorithm",
+        item: "Spam Updates",
+        note: "Standalone updates targeting link manipulation and scaled low-quality content",
+        update: "March 2026 Spam Update (3/24–3/25) completed in under one day. Google called it routine. Attribution was complicated by overlap with the Core Update timing (SE Ranking analysis)",
+        trend: "stable",
+        cred: "official",
+        ref: "https://searchengineland.com/library/platforms/google/google-algorithm-updates",
       },
       {
-        cat:"Ranking", item:"Page-level Authority",
-        note:"Weak content on strong domains can still be penalized",
-        update:"⚠️ Unverified inference: analyst observation, not a confirmed Google mechanism",
-        trend:"up", cred:"unverified",
-        ref:"https://www.seroundtable.com/google-march-2026-core-update-complete-41145.html"
+        cat: "Traffic",
+        item: "AI Overview CTR Impact",
+        note: "Queries with AI Overviews show significantly lower traditional organic CTR",
+        update: "Ahrefs (Feb 2026, based on Dec 2025 data): CTR drop expanded from 34.5% to 58%. SEJ citing Seer Interactive (Apr 2026): latest figure reaches 61%. ⚠️ Studies use different samples and methods; numbers cannot be directly compared",
+        trend: "down",
+        cred: "research",
+        ref: "https://ahrefs.com/blog/ai-overviews-reduce-clicks-update/",
       },
       {
-        cat:"Traffic", item:"AI Overview CTR Impact",
-        note:"Position-1 organic CTR drops 58% when AI Overviews appear",
-        update:"Ahrefs analysis (late 2024 data, worse than the 34.5% drop measured the year prior)",
-        trend:"down", cred:"research",
-        ref:"https://ahrefs.com/blog/the-great-decoupling/"
+        cat: "Ranking Signals",
+        item: "Page-level Authority / Destination Brand",
+        note: "Brand sites, official institutions, and specialist publishers' 'destination value' is becoming a core ranking differentiator",
+        update: "🆕 Post-March 2026 Core Update: Google demonstrably favors 'the source users most naturally expect to visit.' Intermediary/aggregator pages lost visibility across multiple verticals simultaneously (Aleyda Solis, Sistrix)",
+        trend: "up",
+        cred: "research",
+        ref: "https://www.aleydasolis.com/en/search-engine-optimization/google-march-core-update-2026/",
       },
-    ]
-  }
+    ],
+  },
 };
