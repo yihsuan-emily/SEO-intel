@@ -19,10 +19,10 @@
   body::before { content:''; position:fixed; inset:0; background-image:linear-gradient(rgba(26,26,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(26,26,255,0.04) 1px,transparent 1px); background-size:40px 40px; pointer-events:none; z-index:0; }
   .container { max-width:1200px; margin:0 auto; padding:0 24px; position:relative; z-index:1; }
   header { border-bottom:1px solid var(--border); padding:20px 0; position:sticky; top:0; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); z-index:100; }
-  .header-inner { display:flex; align-items:center; justify-content:space-between; }
+  .header-inner { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
   .logo { font-family:var(--mono); font-size:13px; letter-spacing:0.15em; color:var(--accent); text-transform:uppercase; }
   .logo span { color:var(--muted); }
-  .header-right { display:flex; align-items:center; gap:16px; }
+  .header-right { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
   .header-tags { display:flex; gap:8px; }
   .tag { font-family:var(--mono); font-size:10px; padding:4px 10px; border-radius:2px; letter-spacing:0.1em; font-weight:700; }
   .tag-seo { background:rgba(26,94,255,0.1); color:var(--seo); border:1px solid rgba(26,94,255,0.25); }
@@ -32,6 +32,26 @@
   .lang-btn { font-family:var(--mono); font-size:10px; letter-spacing:0.08em; padding:5px 10px; background:none; border:none; cursor:pointer; color:var(--muted); transition:all 0.15s; }
   .lang-btn.active { background:var(--accent); color:#fff; }
   .lang-btn:not(.active):hover { background:var(--bg3); color:var(--text); }
+
+  /* ── Archive selector ── */
+  .archive-selector { display:flex; align-items:center; gap:8px; }
+  .archive-label { font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:0.08em; }
+  .archive-select {
+    font-family:var(--mono); font-size:10px; padding:5px 10px;
+    border:1px solid var(--border); border-radius:3px;
+    background:var(--bg); color:var(--text); cursor:pointer;
+    transition:border-color 0.15s;
+  }
+  .archive-select:hover { border-color:var(--accent); }
+  .archive-select:focus { outline:none; border-color:var(--accent); }
+  .archive-badge {
+    font-family:var(--mono); font-size:9px; padding:3px 8px;
+    border-radius:2px; background:rgba(232,78,27,0.08);
+    color:var(--accent3); border:1px solid rgba(232,78,27,0.2);
+    display:none;
+  }
+  .archive-badge.visible { display:inline-block; }
+
   .nav-tabs { display:flex; border-bottom:1px solid var(--border); overflow-x:auto; }
   .nav-tab { font-family:var(--mono); font-size:11px; letter-spacing:0.08em; padding:14px 20px; cursor:pointer; color:var(--muted); border-bottom:2px solid transparent; transition:all 0.2s; white-space:nowrap; background:none; border-top:none; border-left:none; border-right:none; }
   .nav-tab:hover { color:var(--text); }
@@ -43,6 +63,8 @@
   .date-label { font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:0.1em; }
   .live-dot { display:flex; align-items:center; gap:6px; font-family:var(--mono); font-size:10px; color:#007a73; }
   .live-dot::before { content:''; width:6px; height:6px; border-radius:50%; background:#007a73; animation:pulse 2s infinite; }
+  .live-dot.archived { color:var(--muted); }
+  .live-dot.archived::before { background:var(--muted); animation:none; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
   .priority-alert { border:1px solid rgba(232,78,27,0.3); background:rgba(232,78,27,0.04); border-radius:4px; padding:16px 20px; margin-bottom:20px; display:flex; gap:14px; align-items:flex-start; }
   .priority-icon { font-family:var(--mono); font-size:10px; color:var(--accent3); background:rgba(232,78,27,0.08); padding:4px 8px; border-radius:2px; white-space:nowrap; margin-top:2px; }
@@ -116,12 +138,17 @@
   .status-emerging { background:rgba(176,120,0,0.08);  color:#8a5e00; }
   .status-new      { background:rgba(232,78,27,0.08);  color:#b03010; }
   .status-stable   { background:rgba(122,122,144,0.1); color:var(--muted); }
+  /* loading state */
+  .loading-overlay { display:none; position:fixed; inset:0; background:rgba(255,255,255,0.7); z-index:200; align-items:center; justify-content:center; font-family:var(--mono); font-size:12px; color:var(--muted); }
+  .loading-overlay.visible { display:flex; }
   ::-webkit-scrollbar { width:4px; height:4px; }
   ::-webkit-scrollbar-track { background:var(--bg); }
   ::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
 </style>
 </head>
 <body>
+
+<div class="loading-overlay" id="loading-overlay">載入存檔中…</div>
 
 <header>
   <div class="container">
@@ -133,6 +160,19 @@
           <span class="tag tag-aeo">AEO</span>
           <span class="tag tag-geo">GEO</span>
         </div>
+
+        <!-- ── Archive selector ── -->
+        <div class="archive-selector">
+          <span class="archive-label" data-en="Issue" data-zh="期數">Issue</span>
+          <select class="archive-select" id="archive-select" onchange="loadArchive(this.value)">
+            <option value="latest">Latest</option>
+            <!-- 每次新增存檔後，在這裡加一行 option，例如：
+            <option value="archive/data_2026.04.30.js">2026.04.30 · #2</option>
+            -->
+          </select>
+          <span class="archive-badge" id="archive-badge">ARCHIVE</span>
+        </div>
+
         <div class="lang-toggle">
           <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
           <button class="lang-btn" id="btn-zh" onclick="setLang('zh')">中文</button>
@@ -157,7 +197,7 @@
 <main>
   <div class="date-bar">
     <div class="date-label" id="date-label"></div>
-    <div class="live-dot">LIVE</div>
+    <div class="live-dot" id="live-dot">LIVE</div>
   </div>
   <div class="legend" id="legend-bar"></div>
   <div id="priority-alert"></div>
@@ -295,6 +335,9 @@ const i18n = {
     kbSEO: 'SEO · Search Engine Optimization',
     kbAEO: 'AEO · Answer Engine Optimization',
     kbGEO: 'GEO · Generative Engine Optimization',
+    archiveLabel:    'Issue',
+    archiveLatest:   'Latest',
+    loading:         'Loading archive…',
   },
   zh: {
     dateFormat:      d => `// ${d.date} · ${d.weekday||'週日'} · 第${d.issue}期`,
@@ -319,11 +362,17 @@ const i18n = {
     kbSEO: 'SEO · 搜尋引擎優化',
     kbAEO: 'AEO · 答案引擎優化',
     kbGEO: 'GEO · 生成引擎優化',
+    archiveLabel:    '期數',
+    archiveLatest:   '最新期',
+    loading:         '載入存檔中…',
   }
 };
 
-// ── State & helpers ───────────────────────────────
+// ── State ─────────────────────────────────────────
 let LANG = 'en';
+let ARCHIVE_DATA    = null;  // 存放載入的存檔資料（null = 顯示最新）
+let ARCHIVE_DATA_EN = null;
+
 const catClass    = { strategy:'cat-strategy', execution:'cat-execution', measurement:'cat-measurement', market:'cat-market' };
 const credClass   = { official:'cred-official', research:'cred-research', opinion:'cred-opinion', unverified:'cred-unverified' };
 const domainClass = { SEO:'tag-seo', AEO:'tag-aeo', GEO:'tag-geo' };
@@ -331,10 +380,89 @@ const trendSymbol = { up:'↑', down:'↓', stable:'→' };
 const trendClass  = { up:'trend-up', down:'trend-down', stable:'trend-stable' };
 const pClass      = { high:'p-high', mid:'p-mid', low:'p-low' };
 
-function getT()    { return i18n[LANG]; }
-// ── getData: reads from data file based on language ──
-// TRACKER is now inside getData().tracker — no longer in index.html
-function getData() { return LANG==='en' && typeof INTEL_DATA_EN!=='undefined' ? INTEL_DATA_EN : INTEL_DATA; }
+function getT() { return i18n[LANG]; }
+
+// ── getData: 優先存檔資料，否則用最新 ─────────────
+function getData() {
+  if (ARCHIVE_DATA !== null) {
+    return (LANG === 'en' && ARCHIVE_DATA_EN !== null) ? ARCHIVE_DATA_EN : ARCHIVE_DATA;
+  }
+  return (LANG === 'en' && typeof INTEL_DATA_EN !== 'undefined') ? INTEL_DATA_EN : INTEL_DATA;
+}
+
+// ── 載入存檔 ──────────────────────────────────────
+function loadArchive(value) {
+  const badge   = document.getElementById('archive-badge');
+  const liveDot = document.getElementById('live-dot');
+  const loading = document.getElementById('loading-overlay');
+
+  if (value === 'latest') {
+    // 回到最新
+    ARCHIVE_DATA    = null;
+    ARCHIVE_DATA_EN = null;
+    badge.classList.remove('visible');
+    liveDot.classList.remove('archived');
+    liveDot.textContent = 'LIVE';
+    renderDaily();
+    if (document.getElementById('page-tracker').classList.contains('active')) renderTracker();
+    return;
+  }
+
+  // 載入存檔 JS
+  loading.classList.add('visible');
+  loading.textContent = getT().loading;
+
+  // 移除舊的存檔 script tag（避免重複）
+  const old = document.getElementById('archive-script');
+  if (old) old.remove();
+  const oldEn = document.getElementById('archive-script-en');
+  if (oldEn) oldEn.remove();
+
+  // 清空存檔變數
+  window.__ARCHIVE_INTEL_DATA    = undefined;
+  window.__ARCHIVE_INTEL_DATA_EN = undefined;
+
+  // 存檔命名規則：archive/data_YYYY.MM.DD.js → EN 版：archive/data_en_YYYY.MM.DD.js
+  const enValue = value.replace('data_', 'data_en_');
+
+  let zhLoaded = false, enLoaded = false;
+
+  function tryDone() {
+    if (!zhLoaded || !enLoaded) return;
+    loading.classList.remove('visible');
+
+    ARCHIVE_DATA    = window.__ARCHIVE_INTEL_DATA    || null;
+    ARCHIVE_DATA_EN = window.__ARCHIVE_INTEL_DATA_EN || null;
+
+    if (!ARCHIVE_DATA) {
+      alert('存檔載入失敗，請確認檔案存在');
+      document.getElementById('archive-select').value = 'latest';
+      return;
+    }
+
+    badge.classList.add('visible');
+    liveDot.classList.add('archived');
+    liveDot.textContent = 'ARCHIVE';
+    renderDaily();
+    if (document.getElementById('page-tracker').classList.contains('active')) renderTracker();
+  }
+
+  // 載入 ZH 版
+  const scriptZh = document.createElement('script');
+  scriptZh.id  = 'archive-script';
+  scriptZh.src = value + '?t=' + Date.now();
+  scriptZh.onload  = () => { zhLoaded = true; tryDone(); };
+  scriptZh.onerror = () => { zhLoaded = true; tryDone(); };
+  document.head.appendChild(scriptZh);
+
+  // 載入 EN 版
+  const scriptEn = document.createElement('script');
+  scriptEn.id  = 'archive-script-en';
+  scriptEn.src = enValue + '?t=' + Date.now();
+  scriptEn.onload  = () => { enLoaded = true; tryDone(); };
+  scriptEn.onerror = () => { enLoaded = true; tryDone(); };
+  document.head.appendChild(scriptEn);
+}
 
 // ── Language switch ───────────────────────────────
 function setLang(lang) {
@@ -346,14 +474,15 @@ function setLang(lang) {
   ['daily','tracker','framework'].forEach(id => {
     document.getElementById('tab-'+id).textContent = t.tabs[id];
   });
-  document.getElementById('kb-title').textContent   = t.kbTitle;
-  document.getElementById('kb-subtitle').textContent = t.kbSubtitle;
-  document.getElementById('kb-seo-header').textContent = t.kbSEO;
-  document.getElementById('kb-aeo-header').textContent = t.kbAEO;
-  document.getElementById('kb-geo-header').textContent = t.kbGEO;
   document.querySelectorAll('[data-en]').forEach(el => {
     el.textContent = lang==='en' ? el.dataset.en : el.dataset.zh;
   });
+  // archive selector label
+  document.querySelector('.archive-label').textContent = t.archiveLabel;
+  // update Latest option label
+  const sel = document.getElementById('archive-select');
+  if (sel.options[0]) sel.options[0].text = t.archiveLatest;
+
   renderDaily();
   if (document.getElementById('page-tracker').classList.contains('active')) renderTracker();
 }
@@ -395,11 +524,11 @@ function renderDaily() {
     </div>`).join('');
 }
 
-// ── Render: Tracker — reads from getData().tracker ─
+// ── Render: Tracker ───────────────────────────────
 function renderTracker() {
   const t = getT();
-  const tracker = getData().tracker;   // ← from data.js / data_en.js
-  if (!tracker) { document.getElementById('tracker-content').innerHTML = '<p style="color:var(--muted);padding:20px">No tracker data found in data file.</p>'; return; }
+  const tracker = getData().tracker;
+  if (!tracker) { document.getElementById('tracker-content').innerHTML = '<p style="color:var(--muted);padding:20px">No tracker data found.</p>'; return; }
 
   document.getElementById('tracker-content').innerHTML = Object.entries(tracker).map(([name, rows]) => `
     <div class="tracker-section">
@@ -424,7 +553,7 @@ function renderTracker() {
     </div>`).join('');
 }
 
-// ── Export CSV — reads from getData().tracker ──────
+// ── Export CSV ────────────────────────────────────
 function exportCSV() {
   const t = getT();
   const tracker = getData().tracker;
@@ -461,7 +590,7 @@ setLang('en');
 <script src="data.js"></script>
 <script src="data_en.js"></script>
 <script>
-  // Re-render after data files load — ensures INTEL_DATA_EN is available
+  // Re-render after data files load
   setLang('en');
 </script>
 </body>
