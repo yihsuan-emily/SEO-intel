@@ -1,0 +1,20 @@
+=================
+第 N 期產出後：
+
+1. 覆蓋根目錄的 data.js 和 data_en.js（最新期）
+
+2. 把舊的 data.js 內容存成 archive/data_YYYY.MM.DD.js
+   → 第一行改成 window.__ARCHIVE_INTEL_DATA = {
+   把舊的 data_en.js 內容存成 archive/data_en_YYYY.MM.DD.js
+   → 第一行改成 window.__ARCHIVE_INTEL_DATA_EN = {
+
+3. 在 archive-index.json 最前面加一行：
+   { "value": "archive/data_YYYY.MM.DD.js", "label": "YYYY.MM.DD · #N" }
+
+4. index.html → 永遠不動 ✅ //
+==============================
+[
+  { "value": "archive/data_2026.05.08.js", "label": "2026.05.08 · #3" },
+  { "value": "archive/data_2026.05.01.js", "label": "2026.05.01 · #2" },
+  { "value": "archive/data_2026.04.26.js", "label": "2026.04.26 · #1" }
+]
