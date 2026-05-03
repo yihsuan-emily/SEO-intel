@@ -4,6 +4,6 @@
 // ============================================
 
 const ARCHIVE_INDEX = [
-  { value: "archive/data_2026.05.01.js", label: "2026.05.01 · #2" }
+  { value: "archive/data_2026.05.01.js", label: "2026.05.01 · #2" },
   { value: "archive/data_2026.04.26.js", label: "2026.04.26 · #1" }
 ];
