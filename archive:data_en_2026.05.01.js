@@ -1,4 +1,4 @@
-const INTEL_DATA_EN = {
+ window.__ARCHIVE_INTEL_DATA_EN = {
   meta: {
     date: "2026.05.01",
     weekday: "週五",
