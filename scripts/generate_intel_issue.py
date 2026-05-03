@@ -231,6 +231,24 @@ const INTEL_DATA = {{
   }}
 }};
 ```
+## 每期產出規則
+每次產出新期的 data.js 和 data_en.js 時，同時額外輸出以下兩個 archive 格式檔案：
+
+### archive/data_YYYY.MM.DD.js
+- 內容與 data.js 完全相同
+- 第一行改為：window.__ARCHIVE_INTEL_DATA = {
+- 結尾不需要 const 宣告
+
+### archive/data_en_YYYY.MM.DD.js
+- 內容與 data_en.js 完全相同
+- 第一行改為：window.__ARCHIVE_INTEL_DATA_EN = {
+- 結尾不需要 const 宣告
+
+### archive-index.js 更新片段
+每期同時輸出一行新增內容，格式如下（供使用者手動加到 archive-index.js 最前面）：
+{ value: "archive/data_YYYY.MM.DD.js", label: "YYYY.MM.DD · #N" },
+
+日期取自 meta.date，期數取自 meta.issue。
 
 ## 信源規則
 - 官方說法和研究數據才能作為策略依據
